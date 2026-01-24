@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://j1egkjnjq1av"]
+
+[ext_resource type="Script" uid="uid://rvxbqrar0enk" path="res://Scripts/distraction.gd" id="1_2wani"]
+[ext_resource type="Texture2D" uid="uid://c5ktujoxrn" path="res://icon.svg" id="1_toaxa"]
+
+[node name="Distraction" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2wani")
+
+[node name="TestDistraction" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+offset_right = 128.0
+offset_bottom = 128.0
+texture = ExtResource("1_toaxa")
+
+[node name="Close" type="Button" parent="TestDistraction"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -20.0
+offset_bottom = 20.0
+grow_horizontal = 0
+pivot_offset = Vector2(20, 0)
+theme_override_font_sizes/font_size = 10
+text = "X"

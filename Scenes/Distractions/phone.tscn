@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://cd1uxwmokopnf"]
+
+[ext_resource type="Texture2D" uid="uid://dnp04r318vob3" path="res://Assets/Images/Distractions/phone_border.png" id="1_hnbji"]
+[ext_resource type="VideoStream" uid="uid://dee12ok3xx34p" path="res://Assets/Videos/subwaysurfers.ogv" id="2_m2snb"]
+[ext_resource type="Script" uid="uid://cwnhcvqxqfb51" path="res://Scripts/phone.gd" id="2_wcv56"]
+
+[node name="Phone" type="TextureRect"]
+z_index = 1
+offset_right = 79.0
+offset_bottom = 165.0
+mouse_filter = 2
+texture = ExtResource("1_hnbji")
+script = ExtResource("2_wcv56")
+
+[node name="Video" type="VideoStreamPlayer" parent="."]
+z_index = -1
+layout_mode = 0
+offset_left = 3.0
+offset_top = 3.0000002
+offset_right = 73.0
+offset_bottom = 150.0
+scale = Vector2(1.0246639, 1.0751956)
+mouse_filter = 2
+stream = ExtResource("2_m2snb")
+autoplay = true
+
+[node name="Button" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

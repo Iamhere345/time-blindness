@@ -1,0 +1,124 @@
+[gd_scene load_steps=12 format=3 uid="uid://bx1bi8acbmxc3"]
+
+[ext_resource type="Script" uid="uid://dup5b62md18qg" path="res://Scripts/hud.gd" id="1_e0onf"]
+[ext_resource type="Texture2D" uid="uid://0uep1xyo73a4" path="res://Assets/Images/Hud/hud-bg.png" id="2_bjfho"]
+[ext_resource type="Texture2D" uid="uid://6k54inl1r35q" path="res://Assets/Images/Hud/stopwatch.png" id="3_6fbih"]
+[ext_resource type="PackedScene" uid="uid://1a7nntaay4uk" path="res://Scenes/spritesheet_rect.tscn" id="4_43w4t"]
+[ext_resource type="Texture2D" uid="uid://b6ulvkqkoxf73" path="res://Assets/Images/Hud/windows.png" id="5_7gr8i"]
+[ext_resource type="Texture2D" uid="uid://b2sg5tltp8y5t" path="res://Assets/Images/Hud/concentration.png" id="6_5ep0j"]
+[ext_resource type="Texture2D" uid="uid://cg2u4n5278l5m" path="res://Assets/Images/Hud/timebar.png" id="7_4f5kr"]
+[ext_resource type="Texture2D" uid="uid://cd56dnxl78de4" path="res://Assets/Images/Hud/timebar-fill.png" id="8_piegi"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_t1xeu"]
+font_size = 48
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i2avg"]
+atlas = ExtResource("5_7gr8i")
+region = Rect2(0, 0, 179, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1a2va"]
+atlas = ExtResource("6_5ep0j")
+region = Rect2(0, 0, 177, 0)
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_e0onf")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Background" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+mouse_default_cursor_shape = 1
+texture = ExtResource("2_bjfho")
+
+[node name="UI" type="Control" parent="Control"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -130.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="Stopwatch" type="TextureRect" parent="Control/UI"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("3_6fbih")
+
+[node name="Label" type="Label" parent="Control/UI/Stopwatch"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 23.0
+offset_right = 1.0
+offset_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "15"
+label_settings = SubResource("LabelSettings_t1xeu")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Windows" parent="Control/UI" instance=ExtResource("4_43w4t")]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 40.0
+offset_top = -120.0
+offset_right = 219.0
+offset_bottom = -24.0
+grow_vertical = 0
+texture = SubResource("AtlasTexture_i2avg")
+
+[node name="Concentration" parent="Control/UI" instance=ExtResource("4_43w4t")]
+layout_mode = 0
+offset_left = 409.0
+offset_top = 20.0
+offset_right = 586.0
+offset_bottom = 130.0
+texture = SubResource("AtlasTexture_1a2va")
+SPRITE_WIDTH = 177.0
+
+[node name="TimeBar" type="TextureProgressBar" parent="Control/UI"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 64.0
+offset_top = -29.0
+offset_right = 186.0
+offset_bottom = -3.0
+grow_vertical = 0
+value = 100.0
+nine_patch_stretch = true
+texture_under = ExtResource("7_4f5kr")
+texture_progress = ExtResource("8_piegi")
+
+[editable path="Control/UI/Windows"]

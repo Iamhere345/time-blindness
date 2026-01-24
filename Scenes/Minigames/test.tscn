@@ -1,0 +1,28 @@
+[gd_scene load_steps=7 format=3 uid="uid://b3adddaicqm5u"]
+
+[ext_resource type="PackedScene" uid="uid://c1s7lt533x7l7" path="res://Scenes/minigame.tscn" id="1_ed13i"]
+[ext_resource type="Texture2D" uid="uid://ck5mxdqytd7wo" path="res://Assets/Images/Test/test.png" id="2_6mje1"]
+[ext_resource type="PackedScene" uid="uid://cymb63oyp6gph" path="res://Scenes/GamePrefabs/button_game.tscn" id="3_vn64m"]
+[ext_resource type="Texture2D" uid="uid://dp0w2n76n67jq" path="res://Assets/Images/Myki/myki-cursor.png" id="4_vn64m"]
+[ext_resource type="Texture2D" uid="uid://b5uwsujgv3axm" path="res://Assets/Images/Myki/myki-hover.png" id="5_vn64m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i4ljn"]
+size = Vector2(128, 192)
+
+[node name="Minigame" instance=ExtResource("1_ed13i")]
+
+[node name="Test" type="Sprite2D" parent="." index="1"]
+position = Vector2(320, 192)
+scale = Vector2(0.32, 0.32)
+texture = ExtResource("2_6mje1")
+
+[node name="Area2D" type="Area2D" parent="." index="2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
+position = Vector2(320, 192)
+shape = SubResource("RectangleShape2D_i4ljn")
+
+[node name="ButtonGame" parent="." index="3" node_paths=PackedStringArray("click_target") instance=ExtResource("3_vn64m")]
+click_target = NodePath("../Area2D")
+cursor_normal = ExtResource("4_vn64m")
+cursor_hover = ExtResource("5_vn64m")

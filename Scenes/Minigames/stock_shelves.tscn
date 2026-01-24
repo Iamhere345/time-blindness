@@ -1,0 +1,174 @@
+[gd_scene load_steps=18 format=3 uid="uid://mtvtjdbak8du"]
+
+[ext_resource type="Texture2D" uid="uid://pxbyfh1dy5ci" path="res://Assets/Images/StockShelves/shelves-bg.png" id="1_j8ory"]
+[ext_resource type="Script" uid="uid://rgtsvsbo73ta" path="res://Scripts/stock_shelves.gd" id="1_orc8u"]
+[ext_resource type="Texture2D" uid="uid://dshkgymr6tibw" path="res://Assets/Images/StockShelves/boxes-spritesheet.png" id="2_6psyw"]
+[ext_resource type="Texture2D" uid="uid://c32u8u15t36sk" path="res://Assets/Images/StockShelves/fruits-spritesheet.png" id="3_orc8u"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6c1ld"]
+atlas = ExtResource("2_6psyw")
+region = Rect2(0, 0, 247, 161)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j2st8"]
+atlas = ExtResource("2_6psyw")
+region = Rect2(247, 0, 247, 161)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_62mm8"]
+atlas = ExtResource("2_6psyw")
+region = Rect2(494, 0, 247, 161)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_162vh"]
+atlas = ExtResource("2_6psyw")
+region = Rect2(741, 0, 247, 161)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c8eqj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6c1ld")
+}],
+"loop": true,
+"name": &"0",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j2st8")
+}],
+"loop": true,
+"name": &"1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_62mm8")
+}],
+"loop": true,
+"name": &"2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_162vh")
+}],
+"loop": true,
+"name": &"3",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ovqlb"]
+atlas = ExtResource("3_orc8u")
+region = Rect2(96, 0, 48, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_amwm2"]
+atlas = ExtResource("3_orc8u")
+region = Rect2(48, 0, 48, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mjq5i"]
+atlas = ExtResource("3_orc8u")
+region = Rect2(0, 0, 48, 37)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r2nfw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ovqlb")
+}],
+"loop": true,
+"name": &"apple",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_amwm2")
+}],
+"loop": true,
+"name": &"pineapple",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mjq5i")
+}],
+"loop": true,
+"name": &"pumpkin",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6psyw"]
+size = Vector2(247, 161)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_orc8u"]
+size = Vector2(315, 47)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6c1ld"]
+size = Vector2(164.625, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j2st8"]
+size = Vector2(164.875, 46)
+
+[node name="StockShelves" type="Node2D"]
+script = ExtResource("1_orc8u")
+
+[node name="ShelvesBg" type="Sprite2D" parent="."]
+texture = ExtResource("1_j8ory")
+centered = false
+
+[node name="Box" type="AnimatedSprite2D" parent="."]
+position = Vector2(356, 119)
+sprite_frames = SubResource("SpriteFrames_c8eqj")
+animation = &"0"
+centered = false
+
+[node name="Fruit" type="AnimatedSprite2D" parent="."]
+position = Vector2(-61, 0)
+sprite_frames = SubResource("SpriteFrames_r2nfw")
+animation = &"apple"
+
+[node name="Apple" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(123, 57.5)
+sprite_frames = SubResource("SpriteFrames_r2nfw")
+animation = &"apple"
+
+[node name="Pineapple" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(201, 230.5)
+sprite_frames = SubResource("SpriteFrames_r2nfw")
+animation = &"pineapple"
+
+[node name="Pumpkin" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(456, 50.5)
+sprite_frames = SubResource("SpriteFrames_r2nfw")
+animation = &"pumpkin"
+
+[node name="BoxTrigger" type="Area2D" parent="."]
+position = Vector2(7, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BoxTrigger"]
+position = Vector2(472.5, 199.5)
+shape = SubResource("RectangleShape2D_6psyw")
+
+[node name="PumpkinTrigger" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PumpkinTrigger"]
+position = Vector2(482.5, 45.5)
+shape = SubResource("RectangleShape2D_orc8u")
+
+[node name="AppleTrigger" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AppleTrigger"]
+position = Vector2(82.3125, 46)
+shape = SubResource("RectangleShape2D_6c1ld")
+
+[node name="PineappleTrigger" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PineappleTrigger"]
+position = Vector2(238.5625, 226)
+shape = SubResource("RectangleShape2D_j2st8")
+
+[connection signal="input_event" from="BoxTrigger" to="." method="_on_box_trigger_input_event"]
+[connection signal="input_event" from="PumpkinTrigger" to="." method="_on_pumpkin_trigger_input_event"]
+[connection signal="input_event" from="AppleTrigger" to="." method="_on_apple_trigger_input_event"]
+[connection signal="input_event" from="PineappleTrigger" to="." method="_on_pineapple_trigger_input_event"]

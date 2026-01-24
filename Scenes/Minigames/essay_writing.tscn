@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://c6iglrw7vihjs"]
+
+[ext_resource type="Script" uid="uid://c7ysa51534bbb" path="res://Scripts/essay_writing.gd" id="1_wj40v"]
+[ext_resource type="Texture2D" uid="uid://dlp2rb8gkpxjs" path="res://Assets/Images/Essay/essay-bg.png" id="2_ki6pc"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ki6pc"]
+line_spacing = 0.0
+font_size = 11
+font_color = Color(0, 0, 0, 1)
+outline_color = Color(0, 0, 0, 1)
+
+[node name="EssayWriting" type="CanvasLayer"]
+script = ExtResource("1_wj40v")
+chars_per_key = 2
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -80.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_ki6pc")
+
+[node name="Essay" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 240.0
+offset_top = 33.0
+offset_right = 405.0
+offset_bottom = 255.0
+label_settings = SubResource("LabelSettings_ki6pc")
+autowrap_mode = 2

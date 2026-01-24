@@ -1,0 +1,72 @@
+[gd_scene load_steps=10 format=3 uid="uid://de0e5hpw8qfmp"]
+
+[ext_resource type="Texture2D" uid="uid://p15rgauar768" path="res://Assets/Images/Tills/tills_backround.png" id="1_bwp2q"]
+[ext_resource type="Script" uid="uid://sn1nlbuhycq7" path="res://Scripts/tills.gd" id="1_byjlw"]
+[ext_resource type="Texture2D" uid="uid://bvklqyvgavtlq" path="res://Assets/Images/Tills/itemregisterBauble.png" id="2_y2xi1"]
+[ext_resource type="Texture2D" uid="uid://dadohqlt4qjhy" path="res://Assets/Images/Tills/itemregisterCard.png" id="3_byjlw"]
+[ext_resource type="Texture2D" uid="uid://up6l5i4aikvv" path="res://Assets/Images/Tills/itemregisterGnome.png" id="4_kky0n"]
+[ext_resource type="Texture2D" uid="uid://doeurtqsbdd3p" path="res://Assets/Images/Tills/mango.png" id="5_23mk3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_byjlw"]
+radius = 40.898495
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kky0n"]
+radius = 23.133444
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kky0n"]
+size = Vector2(57, 216)
+
+[node name="Tills" type="Node2D"]
+script = ExtResource("1_byjlw")
+
+[node name="TillsBackround" type="Sprite2D" parent="."]
+texture = ExtResource("1_bwp2q")
+centered = false
+
+[node name="Bauble" type="Sprite2D" parent="." groups=["till_items"]]
+position = Vector2(573, 106.00001)
+scale = Vector2(0.7839506, 0.7839506)
+texture = ExtResource("2_y2xi1")
+
+[node name="Area2D" type="Area2D" parent="Bauble"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bauble/Area2D"]
+shape = SubResource("CircleShape2D_byjlw")
+
+[node name="Bar" type="Sprite2D" parent="." groups=["till_items"]]
+position = Vector2(507, 113)
+texture = ExtResource("3_byjlw")
+
+[node name="Area2D" type="Area2D" parent="Bar"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Bar/Area2D"]
+polygon = PackedVector2Array(-59, -23, -14, -56, 57, 17, 15, 55)
+
+[node name="Gnome" type="Sprite2D" parent="." groups=["till_items"]]
+position = Vector2(387, 102.000015)
+rotation = -0.40032256
+scale = Vector2(0.6161963, 0.6161963)
+texture = ExtResource("4_kky0n")
+
+[node name="Area2D" type="Area2D" parent="Gnome"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Gnome/Area2D"]
+polygon = PackedVector2Array(-46.45514, 93.12128, 40.345337, 108.706696, 55.128967, -13.676849, -1.7731323, -108.243744, -53.574097, -19.14679)
+
+[node name="Mango" type="Sprite2D" parent="." groups=["till_items"]]
+position = Vector2(459, 184)
+scale = Vector2(1.6, 1.6)
+texture = ExtResource("5_23mk3")
+
+[node name="Area2D" type="Area2D" parent="Mango"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mango/Area2D"]
+shape = SubResource("CircleShape2D_kky0n")
+
+[node name="Scanner" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Scanner"]
+position = Vector2(269.5, 172)
+shape = SubResource("RectangleShape2D_kky0n")
+
+[connection signal="area_entered" from="Scanner" to="." method="_on_scanner_area_entered"]

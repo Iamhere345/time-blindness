@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://1a7nntaay4uk"]
+
+[ext_resource type="Script" uid="uid://xl8qq1abor0s" path="res://Scripts/spritesheet_rect.gd" id="2_vfdj4"]
+
+[node name="SpritesheetRect" type="TextureRect"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_vfdj4")

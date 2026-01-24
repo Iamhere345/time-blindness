@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://0caahpmmyc8x"]
+
+[ext_resource type="Script" uid="uid://cy6e4djl8raea" path="res://Scripts/birdwatching.gd" id="1_ailkd"]
+[ext_resource type="Texture2D" uid="uid://bp4jvajby3dls" path="res://Assets/Images/Birdwatching/birdwatching-bg.png" id="2_ailkd"]
+[ext_resource type="SpriteFrames" uid="uid://ce3f46jrwqcho" path="res://Assets/Resources/Minigames/Birdwatching/brid-anim.tres" id="3_ailkd"]
+[ext_resource type="Texture2D" uid="uid://14n68eq72hpd" path="res://Assets/Images/Birdwatching/telescope.png" id="4_xfvh0"]
+
+[node name="Birdwatching" type="Node2D"]
+script = ExtResource("1_ailkd")
+
+[node name="MykiBg" type="Sprite2D" parent="."]
+texture = ExtResource("2_ailkd")
+centered = false
+
+[node name="Bird1" type="AnimatedSprite2D" parent="."]
+position = Vector2(544, 160)
+sprite_frames = ExtResource("3_ailkd")
+animation = &"idle"
+
+[node name="Bird2" type="AnimatedSprite2D" parent="."]
+position = Vector2(368, 64.000015)
+sprite_frames = ExtResource("3_ailkd")
+animation = &"idle"
+
+[node name="Bird3" type="AnimatedSprite2D" parent="."]
+position = Vector2(72, 120)
+sprite_frames = ExtResource("3_ailkd")
+animation = &"idle"
+
+[node name="Telescope" type="Sprite2D" parent="."]
+texture = ExtResource("4_xfvh0")

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cymb63oyp6gph"]
+
+[ext_resource type="Script" uid="uid://dlrcma6u5u32g" path="res://Scripts/button_game.gd" id="1_c42b0"]
+
+[node name="ButtonGame" type="Node"]
+script = ExtResource("1_c42b0")

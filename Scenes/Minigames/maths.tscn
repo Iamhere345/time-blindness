@@ -1,0 +1,154 @@
+[gd_scene load_steps=6 format=3 uid="uid://pccxxffexl31"]
+
+[ext_resource type="Texture2D" uid="uid://blj45jirorkfn" path="res://Assets/Images/Maths/maths-bg.png" id="1_2teu2"]
+[ext_resource type="Script" uid="uid://cvvikj4tjwuu4" path="res://Scripts/maths.gd" id="1_bjous"]
+[ext_resource type="Texture2D" uid="uid://blc8otgfsq07s" path="res://Assets/Images/Maths/tick.png" id="2_p8unl"]
+[ext_resource type="Texture2D" uid="uid://by1ucyuc7najl" path="res://Assets/Images/Maths/cross.png" id="3_sfks8"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_bjous"]
+font_color = Color(0, 0, 0, 1)
+
+[node name="Maths" type="CanvasLayer"]
+script = ExtResource("1_bjous")
+tick = ExtResource("2_p8unl")
+cross = ExtResource("3_sfks8")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -80.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_2teu2")
+
+[node name="Question1" type="Control" parent="Control"]
+anchors_preset = 0
+offset_left = 127.0
+offset_top = 32.0
+offset_right = 384.0
+offset_bottom = 64.0
+mouse_filter = 2
+
+[node name="True" type="TextureButton" parent="Control/Question1"]
+layout_mode = 0
+offset_left = 170.0
+offset_top = -1.0
+offset_right = 206.0
+offset_bottom = 34.0
+
+[node name="False" type="TextureButton" parent="Control/Question1"]
+layout_mode = 0
+offset_left = 221.0
+offset_top = -1.0
+offset_right = 256.0
+offset_bottom = 34.0
+
+[node name="Label" type="Label" parent="Control/Question1"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 149.0
+grow_vertical = 2
+text = "120+12=144"
+label_settings = SubResource("LabelSettings_bjous")
+
+[node name="Question2" type="Control" parent="Control"]
+anchors_preset = 0
+offset_left = 127.0
+offset_top = 86.0
+offset_right = 384.0
+offset_bottom = 118.0
+mouse_filter = 2
+
+[node name="True" type="TextureButton" parent="Control/Question2"]
+layout_mode = 0
+offset_left = 170.0
+offset_top = -1.0
+offset_right = 206.0
+offset_bottom = 34.0
+
+[node name="False" type="TextureButton" parent="Control/Question2"]
+layout_mode = 0
+offset_left = 221.0
+offset_top = -1.0
+offset_right = 256.0
+offset_bottom = 34.0
+
+[node name="Label" type="Label" parent="Control/Question2"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 149.0
+grow_vertical = 2
+text = "120+12=144"
+label_settings = SubResource("LabelSettings_bjous")
+
+[node name="Question3" type="Control" parent="Control"]
+anchors_preset = 0
+offset_left = 127.0
+offset_top = 142.0
+offset_right = 384.0
+offset_bottom = 174.0
+mouse_filter = 2
+
+[node name="True" type="TextureButton" parent="Control/Question3"]
+layout_mode = 0
+offset_left = 170.0
+offset_top = -1.0
+offset_right = 206.0
+offset_bottom = 34.0
+
+[node name="False" type="TextureButton" parent="Control/Question3"]
+layout_mode = 0
+offset_left = 221.0
+offset_top = -1.0
+offset_right = 256.0
+offset_bottom = 34.0
+
+[node name="Label" type="Label" parent="Control/Question3"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 149.0
+grow_vertical = 2
+text = "120+12=144"
+label_settings = SubResource("LabelSettings_bjous")
+
+[node name="Question4" type="Control" parent="Control"]
+anchors_preset = 0
+offset_left = 127.0
+offset_top = 196.0
+offset_right = 384.0
+offset_bottom = 228.0
+mouse_filter = 2
+
+[node name="True" type="TextureButton" parent="Control/Question4"]
+layout_mode = 0
+offset_left = 170.0
+offset_top = -1.0
+offset_right = 206.0
+offset_bottom = 34.0
+
+[node name="False" type="TextureButton" parent="Control/Question4"]
+layout_mode = 0
+offset_left = 221.0
+offset_top = -1.0
+offset_right = 256.0
+offset_bottom = 34.0
+
+[node name="Label" type="Label" parent="Control/Question4"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 149.0
+grow_vertical = 2
+text = "120+12=144"
+label_settings = SubResource("LabelSettings_bjous")

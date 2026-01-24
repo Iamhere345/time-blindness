@@ -1,0 +1,37 @@
+[gd_resource type="SpriteFrames" load_steps=5 format=3 uid="uid://ce3f46jrwqcho"]
+
+[ext_resource type="Texture2D" uid="uid://diwjoaand3t62" path="res://Assets/Images/Birdwatching/bird-spritesheet.png" id="1_avb0v"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_11c06"]
+atlas = ExtResource("1_avb0v")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q0jvd"]
+atlas = ExtResource("1_avb0v")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kingg"]
+atlas = ExtResource("1_avb0v")
+region = Rect2(0, 48, 48, 48)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_11c06")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q0jvd")
+}],
+"loop": true,
+"name": &"flying",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kingg")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]

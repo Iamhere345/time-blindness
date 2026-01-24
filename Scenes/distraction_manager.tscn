@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://dunin7xbbgvmo"]
+
+[ext_resource type="Script" uid="uid://bhux1yr4482le" path="res://Scripts/distraction_manager.gd" id="1_by1ik"]
+
+[node name="DistractionManager" type="CanvasLayer"]
+script = ExtResource("1_by1ik")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="DistractionInterval" type="Timer" parent="."]
+wait_time = 4.0
+autostart = true
+
+[connection signal="timeout" from="DistractionInterval" to="." method="_on_distraction_interval_timeout"]

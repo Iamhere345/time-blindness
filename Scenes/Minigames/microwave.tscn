@@ -1,0 +1,287 @@
+[gd_scene load_steps=32 format=3 uid="uid://c22yx3brqibub"]
+
+[ext_resource type="Texture2D" uid="uid://bxvlsgcd7yp85" path="res://Assets/Images/Microwave/Microwave_Background.png" id="1_63a4g"]
+[ext_resource type="Script" uid="uid://bqconynqxe5b2" path="res://Scripts/microwave.gd" id="1_veylb"]
+[ext_resource type="Texture2D" uid="uid://druoi3tje8yfv" path="res://Assets/Images/Microwave/fish-spritesheet.png" id="2_veylb"]
+[ext_resource type="Texture2D" uid="uid://bhrl5cy63h6im" path="res://Assets/Images/Microwave/Microwave_Foreground.png" id="3_wxxyl"]
+[ext_resource type="FontFile" uid="uid://cuma3oomwnjqx" path="res://Assets/Resources/DSEG7ClassicMini-Regular.ttf" id="5_wxxyl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_utkuy"]
+atlas = ExtResource("2_veylb")
+region = Rect2(0, 0, 252, 105)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y0wm2"]
+atlas = ExtResource("2_veylb")
+region = Rect2(0, 0, 252, 105)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rm31t"]
+atlas = ExtResource("2_veylb")
+region = Rect2(252, 0, 252, 105)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g0sha"]
+atlas = ExtResource("2_veylb")
+region = Rect2(504, 0, 252, 105)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_om452"]
+atlas = ExtResource("2_veylb")
+region = Rect2(756, 0, 252, 105)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0prkn"]
+atlas = ExtResource("2_veylb")
+region = Rect2(1008, 0, 252, 105)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_knxmk"]
+atlas = ExtResource("2_veylb")
+region = Rect2(1260, 0, 252, 105)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mq0ej"]
+atlas = ExtResource("2_veylb")
+region = Rect2(1512, 0, 252, 105)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5242s"]
+atlas = ExtResource("2_veylb")
+region = Rect2(1764, 0, 252, 105)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ney1"]
+atlas = ExtResource("2_veylb")
+region = Rect2(2016, 0, 252, 105)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m7emc"]
+atlas = ExtResource("2_veylb")
+region = Rect2(2268, 0, 252, 105)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g36jb"]
+atlas = ExtResource("2_veylb")
+region = Rect2(2520, 0, 252, 105)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iseo5"]
+atlas = ExtResource("2_veylb")
+region = Rect2(2772, 0, 252, 105)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ntxue"]
+atlas = ExtResource("2_veylb")
+region = Rect2(3024, 0, 252, 105)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ik8hr"]
+atlas = ExtResource("2_veylb")
+region = Rect2(3276, 0, 252, 105)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0mif4"]
+atlas = ExtResource("2_veylb")
+region = Rect2(3528, 0, 252, 105)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ec5e3"]
+atlas = ExtResource("2_veylb")
+region = Rect2(3780, 0, 252, 105)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cjvyh"]
+atlas = ExtResource("2_veylb")
+region = Rect2(4032, 0, 252, 105)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bjpas"]
+atlas = ExtResource("2_veylb")
+region = Rect2(4284, 0, 252, 105)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_voeud"]
+atlas = ExtResource("2_veylb")
+region = Rect2(4536, 0, 252, 105)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xrc26"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_utkuy")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y0wm2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rm31t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g0sha")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_om452")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0prkn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_knxmk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mq0ej")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5242s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ney1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m7emc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g36jb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iseo5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ntxue")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ik8hr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0mif4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ec5e3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cjvyh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bjpas")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_voeud")
+}],
+"loop": true,
+"name": &"spin",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_63a4g"]
+radius = 11.045361
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_veylb"]
+radius = 11.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wxxyl"]
+radius = 16.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_utkuy"]
+font = ExtResource("5_wxxyl")
+font_size = 26
+font_color = Color(0.26666668, 1, 0.30980393, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_wxxyl"]
+font_color = Color(0, 0, 0, 1)
+
+[node name="Microwave" type="Node2D"]
+script = ExtResource("1_veylb")
+
+[node name="MicrowaveBackground" type="Sprite2D" parent="."]
+texture = ExtResource("1_63a4g")
+centered = false
+
+[node name="Fish" type="AnimatedSprite2D" parent="."]
+position = Vector2(213, 110)
+sprite_frames = SubResource("SpriteFrames_xrc26")
+animation = &"idle"
+
+[node name="MicrowaveForeground" type="Sprite2D" parent="."]
+texture = ExtResource("3_wxxyl")
+centered = false
+
+[node name="1" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="1"]
+position = Vector2(389, 88)
+shape = SubResource("CircleShape2D_63a4g")
+
+[node name="2" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="2"]
+position = Vector2(424, 88)
+shape = SubResource("CircleShape2D_63a4g")
+
+[node name="3" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="3"]
+position = Vector2(459, 89)
+shape = SubResource("CircleShape2D_veylb")
+
+[node name="4" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="4"]
+position = Vector2(389, 114)
+shape = SubResource("CircleShape2D_veylb")
+
+[node name="5" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="5"]
+position = Vector2(424, 114)
+shape = SubResource("CircleShape2D_veylb")
+
+[node name="6" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="6"]
+position = Vector2(459, 114)
+shape = SubResource("CircleShape2D_veylb")
+
+[node name="7" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="7"]
+position = Vector2(389, 139)
+shape = SubResource("CircleShape2D_veylb")
+
+[node name="8" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="8"]
+position = Vector2(424, 139)
+shape = SubResource("CircleShape2D_veylb")
+
+[node name="9" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="9"]
+position = Vector2(459, 139)
+shape = SubResource("CircleShape2D_veylb")
+
+[node name="0" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="0"]
+position = Vector2(424, 164)
+shape = SubResource("CircleShape2D_veylb")
+
+[node name="start" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="start"]
+position = Vector2(459, 169)
+shape = SubResource("CircleShape2D_wxxyl")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Timer" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 379.0
+offset_top = 35.5
+offset_right = 469.0
+offset_bottom = 65.5
+text = "00:00"
+label_settings = SubResource("LabelSettings_utkuy")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TargetValue" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 552.0
+offset_top = 96.0
+offset_right = 592.0
+offset_bottom = 119.0
+rotation = 0.06517078
+label_settings = SubResource("LabelSettings_wxxyl")
+
+[connection signal="input_event" from="start" to="." method="_on_start_input_event"]

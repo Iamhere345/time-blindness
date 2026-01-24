@@ -1,0 +1,105 @@
+[gd_scene load_steps=15 format=3 uid="uid://dv1ipw221r1wg"]
+
+[ext_resource type="Texture2D" uid="uid://wkue411sb0du" path="res://Assets/Images/Basketball/bball-backround.png" id="1_hgfhb"]
+[ext_resource type="Script" uid="uid://du53kh1ep67lw" path="res://Scripts/basketball.gd" id="1_xydoo"]
+[ext_resource type="Texture2D" uid="uid://cgy6qhhn70aef" path="res://Assets/Images/Basketball/bbal_player.png" id="3_jpswa"]
+[ext_resource type="Texture2D" uid="uid://d0gn7s4cgyew0" path="res://Assets/Images/Basketball/bbal_hoop.png" id="4_sk7mn"]
+[ext_resource type="Texture2D" uid="uid://durbma27erymc" path="res://Assets/Images/Basketball/bball-big-ball.png" id="5_2kw60"]
+[ext_resource type="Texture2D" uid="uid://80qvdfpuikgu" path="res://Assets/Images/Basketball/bball-small-ball.png" id="6_jpswa"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d6a67"]
+atlas = ExtResource("3_jpswa")
+region = Rect2(0, 0, 144, 241)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jgfty"]
+atlas = ExtResource("3_jpswa")
+region = Rect2(144, 0, 144, 241)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4beea"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d6a67")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jgfty")
+}],
+"loop": false,
+"name": &"shoot",
+"speed": 1.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wp3cl"]
+radius = 48.0
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_xydoo"]
+a = Vector2(272, 280)
+b = Vector2(240, 192)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_jpswa"]
+a = Vector2(368, 280)
+b = Vector2(400, 192)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xydoo"]
+size = Vector2(106, 20)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_jpswa"]
+
+[node name="Basketball" type="Node2D"]
+script = ExtResource("1_xydoo")
+
+[node name="Background" type="Sprite2D" parent="."]
+texture = ExtResource("1_hgfhb")
+centered = false
+
+[node name="Player" type="AnimatedSprite2D" parent="."]
+position = Vector2(536, 160)
+sprite_frames = SubResource("SpriteFrames_4beea")
+
+[node name="PhysicsBall" type="RigidBody2D" parent="."]
+position = Vector2(-368, 32)
+freeze = true
+
+[node name="BallSprite" type="Sprite2D" parent="PhysicsBall"]
+texture = ExtResource("5_2kw60")
+
+[node name="Ball" type="CollisionShape2D" parent="PhysicsBall"]
+shape = SubResource("CircleShape2D_wp3cl")
+
+[node name="Hoop" type="StaticBody2D" parent="."]
+
+[node name="HoopSprite" type="Sprite2D" parent="Hoop"]
+position = Vector2(320, 236)
+texture = ExtResource("4_sk7mn")
+
+[node name="LeftCollider" type="CollisionShape2D" parent="Hoop"]
+shape = SubResource("SegmentShape2D_xydoo")
+
+[node name="LeftCollider2" type="CollisionShape2D" parent="Hoop"]
+shape = SubResource("SegmentShape2D_jpswa")
+
+[node name="GoalTrigger" type="Area2D" parent="."]
+position = Vector2(0, 40)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GoalTrigger"]
+position = Vector2(323, 304)
+shape = SubResource("RectangleShape2D_xydoo")
+
+[node name="ShootBall" type="Sprite2D" parent="."]
+position = Vector2(536, -32)
+texture = ExtResource("6_jpswa")
+
+[node name="FailTrigger" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FailTrigger"]
+position = Vector2(320, 416)
+scale = Vector2(4.6585364, 3)
+shape = SubResource("WorldBoundaryShape2D_jpswa")
+
+[connection signal="body_entered" from="GoalTrigger" to="." method="_on_goal_trigger_body_entered"]
+[connection signal="body_entered" from="FailTrigger" to="." method="_on_fail_trigger_body_entered"]

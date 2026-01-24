@@ -1,0 +1,86 @@
+[gd_scene load_steps=12 format=3 uid="uid://bpvj70caebera"]
+
+[ext_resource type="Script" uid="uid://22jch0w756wm" path="res://Scripts/dishes.gd" id="1_cswo4"]
+[ext_resource type="Texture2D" uid="uid://p15rgauar768" path="res://Assets/Images/Tills/tills_backround.png" id="2_laayp"]
+[ext_resource type="Texture2D" uid="uid://bvklqyvgavtlq" path="res://Assets/Images/Tills/itemregisterBauble.png" id="3_20k7t"]
+[ext_resource type="Script" uid="uid://djbhcwsg57d5d" path="res://Scripts/clickable_sprite.gd" id="4_8j7sw"]
+[ext_resource type="Texture2D" uid="uid://dadohqlt4qjhy" path="res://Assets/Images/Tills/itemregisterCard.png" id="5_qywbn"]
+[ext_resource type="Texture2D" uid="uid://up6l5i4aikvv" path="res://Assets/Images/Tills/itemregisterGnome.png" id="6_5ralq"]
+[ext_resource type="Texture2D" uid="uid://doeurtqsbdd3p" path="res://Assets/Images/Tills/mango.png" id="7_v4pqg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_byjlw"]
+radius = 40.898495
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kky0n"]
+radius = 23.133444
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kky0n"]
+size = Vector2(191, 216)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cswo4"]
+size = Vector2(172, 278)
+
+[node name="Dishes" type="Node2D"]
+script = ExtResource("1_cswo4")
+
+[node name="TillsBackround" type="Sprite2D" parent="."]
+texture = ExtResource("2_laayp")
+centered = false
+
+[node name="Bauble" type="Sprite2D" parent="." groups=["dishes"]]
+position = Vector2(121.000015, 118)
+scale = Vector2(0.7839506, 0.7839506)
+texture = ExtResource("3_20k7t")
+script = ExtResource("4_8j7sw")
+
+[node name="Area2D" type="Area2D" parent="Bauble"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bauble/Area2D"]
+shape = SubResource("CircleShape2D_byjlw")
+
+[node name="Bar" type="Sprite2D" parent="." groups=["dishes"]]
+position = Vector2(51, 230)
+texture = ExtResource("5_qywbn")
+
+[node name="Area2D" type="Area2D" parent="Bar"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Bar/Area2D"]
+polygon = PackedVector2Array(-59, -23, -14, -56, 57, 17, 15, 55)
+
+[node name="Gnome" type="Sprite2D" parent="." groups=["dishes"]]
+position = Vector2(52.146484, 134.49529)
+rotation = -0.40032256
+scale = Vector2(0.6161963, 0.6161963)
+texture = ExtResource("6_5ralq")
+
+[node name="Area2D" type="Area2D" parent="Gnome"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Gnome/Area2D"]
+polygon = PackedVector2Array(-46.45514, 93.12128, 40.345337, 108.706696, 55.128967, -13.676849, -1.7731323, -108.243744, -53.574097, -19.14679)
+
+[node name="Mango" type="Sprite2D" parent="." groups=["dishes"]]
+position = Vector2(124.146515, 216.49525)
+scale = Vector2(1.6, 1.6)
+texture = ExtResource("7_v4pqg")
+
+[node name="Area2D" type="Area2D" parent="Mango"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mango/Area2D"]
+shape = SubResource("CircleShape2D_kky0n")
+
+[node name="Sink" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sink"]
+position = Vector2(335.5, 172)
+shape = SubResource("RectangleShape2D_kky0n")
+
+[node name="DishRack" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DishRack"]
+position = Vector2(551, 141)
+shape = SubResource("RectangleShape2D_cswo4")
+
+[connection signal="area_entered" from="Sink" to="." method="_on_scanner_area_entered"]
+[connection signal="area_entered" from="Sink" to="." method="_on_sink_area_entered"]
+[connection signal="body_entered" from="Sink" to="." method="_on_scanner_body_entered"]
+[connection signal="area_entered" from="DishRack" to="." method="_on_dish_rack_area_entered"]
