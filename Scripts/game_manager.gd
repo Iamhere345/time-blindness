@@ -1,6 +1,7 @@
 extends Node2D
 
 signal level_finished(time_taken: float, concentration_taken: int, out_of_time: bool)
+signal level_transition
 
 @onready var timer: Timer = $MinigameTimer
 @onready var screen_transition = $ScreenTransition
@@ -10,10 +11,20 @@ var game_index: int = 0
 var current_game: Node
 
 const levels = {
-	"work": {
+	"homework": {
 		"time_limit": 15.0,
 		"time_taken": 25.0,
-		"concentration": -50,
+		"concentration": -25,
+		"minigames": [
+			"maths",
+			"angles",
+			"essay_writing",
+		]
+	},
+	"work": {
+		"time_limit": 15.0,
+		"time_taken": 35.0,
+		"concentration": -25,
 		"minigames": [
 			"myki",
 			"stock_shelves",
@@ -21,7 +32,33 @@ const levels = {
 			"microwave",
 			"myki"
 		]
-	}
+	},
+	"chores": {
+		"time_limit": 10.0,
+		"time_taken": 25.0,
+		"concentration": -25,
+		"minigames": [
+			"clean_room",
+			"trash",
+			"dishes"
+		]
+	},
+	"birdwatching": {
+		"time_limit": 5.0,
+		"time_taken": 15.0,
+		"concentration": 20,
+		"minigames": [
+			"birdwatching"
+		]
+	},
+	"basketball": {
+		"time_limit": 3.0,
+		"time_taken": 10.0,
+		"concentration": 15,
+		"minigames": [
+			"basketball"
+		]
+	},
 }
 
 const minigames: Dictionary = {
@@ -49,12 +86,36 @@ const minigames: Dictionary = {
 		"input_instr": "instr_ad_space",
 		"game_instr": "Shoot!"
 	},
+	"essay_writing": {
+		"input_instr": "instr_ad_space",
+		"game_instr": "Finish your essay!",
+	},
+	"maths": {
+		"input_instr": "instr_mouse_click",
+		"game_instr": "Do your maths homework!",
+	},
+	"angles": {
+		"input_instr": "instr_mouse_click",
+		"game_instr": "Do more maths homework!",
+	},
+	"clean_room": {
+		"input_instr": "instr_mouse_click",
+		"game_instr": "Clean your room!",
+	},
+	"dishes": {
+		"input_instr": "instr_mouse_click",
+		"game_instr": "Do the dishes!",
+	},
+	"trash": {
+		"input_instr": "instr_ad_space",
+		"game_instr": "Take the rubbish out!",
+	},
 }
 
 func _ready() -> void:
 	Globals.minigame_finished.connect(next_minigame)
 
-func start_level(level_name: String) -> int:
+func start_level(level_name: String) -> Array:
 	level = levels[level_name]
 	game_index = 0
 	
@@ -62,7 +123,7 @@ func start_level(level_name: String) -> int:
 	
 	next_minigame()
 	
-	return level["time_limit"]
+	return [level["time_limit"], level["concentration"]]
 
 func next_minigame():
 	print("start next minigame")
@@ -87,6 +148,10 @@ func next_minigame():
 
 
 func _on_minigame_timer_timeout() -> void:
+	if not current_game:
+		print("timeout outside of level")
+		return
+	
 	print("timer timeout")
 	await transition_level()
 		
@@ -114,6 +179,10 @@ func transition_level():
 	
 	await screen_transition.screen_covered
 	print("screen covered")
+	
+	if not current_game:
+		level_transition.emit()
+	
 	screen_transition.transition_complete.connect((func():
 		print("transition complete")
 		screen_transition.visible = false

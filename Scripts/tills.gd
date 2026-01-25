@@ -4,6 +4,8 @@ var grabbed_item: Sprite2D
 var grabbed: bool = false
 var items_grabbed: int = 0
 
+@onready var beep_sound = $BeepSound
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	for child: Node2D in get_children():
@@ -23,13 +25,15 @@ func item_clicked(item: Sprite2D, event: InputEvent):
 		grabbed = true
 
 func _on_scanner_area_entered(area: Area2D) -> void:
-	var item: Sprite2D = area.get_parent()
+	var item: Node2D = area.get_parent()
 	
 	if item.is_in_group("till_items"):
 		grabbed = false
 		grabbed_item = null
 		
 		item.queue_free()
+		
+		beep_sound.play()
 		
 		items_grabbed += 1
 		

@@ -1,5 +1,6 @@
 extends CanvasLayer
 
+@onready var background = $Control/Background
 @onready var anim_player = $Control/Background/AnimationPlayer
 @onready var input_instructions =  $Control/Background/InputInstructions
 @onready var game_instructions = $Control/Background/GameInstructions
@@ -13,6 +14,8 @@ func play_transition(input_instr: String, game_instr: String):
 	
 	game_instructions.text = game_instr
 	
+	background.position = Vector2(-995.0, 0.0)
+	anim_player.play("RESET")
 	anim_player.play("screen_wipe")
 	
 	anim_player.animation_finished.connect(func(_anim_name): transition_complete.emit())

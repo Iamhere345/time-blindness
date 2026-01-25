@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://ydi8dnkmgxbr"]
+
+[ext_resource type="Script" uid="uid://qvpkc583psgh" path="res://Scripts/vacuuming.gd" id="1_ndsuo"]
+[ext_resource type="Texture2D" uid="uid://w5nsbya157bh" path="res://Assets/Images/Vacuuming/vacuum-backround.png" id="2_i5dgo"]
+[ext_resource type="Texture2D" uid="uid://cy2kne6pi73u4" path="res://Assets/Images/Vacuuming/vacuum_cursor.png" id="2_ndsuo"]
+[ext_resource type="SpriteFrames" uid="uid://cjtb6ps8wfk2m" path="res://Assets/Resources/vacuuming.tres" id="3_ndsuo"]
+
+[node name="Vacuuming" type="Node2D"]
+script = ExtResource("1_ndsuo")
+cursor = ExtResource("2_ndsuo")
+
+[node name="VacuumingBg" type="Sprite2D" parent="."]
+texture = ExtResource("2_i5dgo")
+centered = false
+
+[node name="Dust" type="AnimatedSprite2D" parent="."]
+position = Vector2(552, 72)
+sprite_frames = ExtResource("3_ndsuo")
+animation = &"vacuum"
+
+[node name="Dust2" type="AnimatedSprite2D" parent="."]
+position = Vector2(512, 224)
+sprite_frames = ExtResource("3_ndsuo")
+
+[node name="Dust3" type="AnimatedSprite2D" parent="."]
+position = Vector2(136, 80)
+sprite_frames = ExtResource("3_ndsuo")
+
+[node name="Dust4" type="AnimatedSprite2D" parent="."]
+position = Vector2(296, 176)
+sprite_frames = ExtResource("3_ndsuo")

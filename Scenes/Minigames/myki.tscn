@@ -1,10 +1,51 @@
-[gd_scene load_steps=6 format=3 uid="uid://bfgn8imdo0em4"]
+[gd_scene load_steps=12 format=3 uid="uid://bfgn8imdo0em4"]
 
 [ext_resource type="PackedScene" uid="uid://c1s7lt533x7l7" path="res://Scenes/minigame.tscn" id="1_3ufv3"]
 [ext_resource type="Texture2D" uid="uid://be06k3ken5emj" path="res://Assets/Images/Myki/myki_new_bg.png" id="2_3ufv3"]
 [ext_resource type="PackedScene" uid="uid://cymb63oyp6gph" path="res://Scenes/GamePrefabs/button_game.tscn" id="3_lg82r"]
 [ext_resource type="Texture2D" uid="uid://b5uwsujgv3axm" path="res://Assets/Images/Myki/myki-hover.png" id="5_3ufv3"]
 [ext_resource type="Texture2D" uid="uid://dp0w2n76n67jq" path="res://Assets/Images/Myki/myki-cursor.png" id="5_k0ira"]
+[ext_resource type="Texture2D" uid="uid://cejhcrvnlmq2a" path="res://Assets/Images/Myki/train_screen_wipe.png" id="6_1jt88"]
+[ext_resource type="AudioStream" uid="uid://cy7wmdo3t6pjk" path="res://Assets/Audio/train-whistle.mp3" id="7_lg82r"]
+[ext_resource type="AudioStream" uid="uid://bxh7v2x4ouhql" path="res://Assets/Audio/myki.mp3" id="8_qu4a3"]
+
+[sub_resource type="Animation" id="Animation_1jt88"]
+resource_name = "screen_wipe"
+length = 1.25
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.25, 1.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-2840, 0), Vector2(640, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_lg82r"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-2840, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lg82r"]
+_data = {
+&"RESET": SubResource("Animation_lg82r"),
+&"screen_wipe": SubResource("Animation_1jt88")
+}
 
 [node name="Myki" instance=ExtResource("1_3ufv3")]
 
@@ -12,10 +53,13 @@
 texture = ExtResource("2_3ufv3")
 centered = false
 
-[node name="ButtonGame" parent="." index="2" node_paths=PackedStringArray("click_target") instance=ExtResource("3_lg82r")]
+[node name="ButtonGame" parent="." index="2" node_paths=PackedStringArray("click_target", "screen_wipe", "train_audio", "myki_audio") instance=ExtResource("3_lg82r")]
 click_target = NodePath("../Area2D")
 cursor_normal = ExtResource("5_k0ira")
 cursor_hover = ExtResource("5_3ufv3")
+screen_wipe = NodePath("../TrainScreenWipe/AnimationPlayer")
+train_audio = NodePath("../TrainSound")
+myki_audio = NodePath("../BeepSound")
 
 [node name="Area2D" type="Area2D" parent="." index="3"]
 position = Vector2(272, 328)
@@ -25,3 +69,19 @@ scale = Vector2(-1133.8903, -87.01336)
 position = Vector2(0.014110713, -0.1591709)
 scale = Vector2(-4457.1753, -1700.9124)
 polygon = PackedVector2Array(-1.582921e-06, -0.00041789957, -1.582921e-06, -0.00079627265, 1.582921e-06, -0.0008503259, 3.3241344e-05, -0.0009043792, 3.6407186e-05, -0.0008503259, 4.115595e-05, -0.00041789957)
+
+[node name="TrainScreenWipe" type="Sprite2D" parent="." index="4"]
+position = Vector2(-2840, 0)
+texture = ExtResource("6_1jt88")
+centered = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TrainScreenWipe" index="0"]
+libraries = {
+&"": SubResource("AnimationLibrary_lg82r")
+}
+
+[node name="TrainSound" type="AudioStreamPlayer2D" parent="." index="5"]
+stream = ExtResource("7_lg82r")
+
+[node name="BeepSound" type="AudioStreamPlayer2D" parent="." index="6"]
+stream = ExtResource("8_qu4a3")

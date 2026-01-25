@@ -1,9 +1,20 @@
-[gd_scene load_steps=2 format=3 uid="uid://drfyfkbvpv6mv"]
+[gd_scene load_steps=8 format=3 uid="uid://drfyfkbvpv6mv"]
 
 [ext_resource type="Script" uid="uid://ct6rnksc3upm0" path="res://Scripts/level_select.gd" id="1_1fiak"]
+[ext_resource type="Texture2D" uid="uid://dwt4mle1o56ge" path="res://Assets/Images/LevelSelect/task_list.png" id="2_nkys2"]
+[ext_resource type="Texture2D" uid="uid://bpw1jjx3meajx" path="res://Assets/Images/LevelSelect/cloud-sheet.png" id="3_72w8f"]
+[ext_resource type="Texture2D" uid="uid://by1ucyuc7najl" path="res://Assets/Images/Maths/cross.png" id="3_kb5mc"]
+[ext_resource type="Texture2D" uid="uid://blc8otgfsq07s" path="res://Assets/Images/Maths/tick.png" id="3_s6o25"]
+[ext_resource type="Texture2D" uid="uid://g1fxjh2t83hk" path="res://Assets/Images/LevelSelect/birdwatching-idea.png" id="4_s6o25"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qnihq"]
+atlas = ExtResource("3_72w8f")
+region = Rect2(0, 0, 249, 0)
 
 [node name="LevelSelect" type="CanvasLayer"]
 script = ExtResource("1_1fiak")
+tick = ExtResource("3_s6o25")
+cross = ExtResource("3_kb5mc")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -13,21 +24,103 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TestLevel" type="Button" parent="Control"]
+[node name="TodoList" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_left = -96.0
+offset_top = 40.0
+offset_right = 311.0
+offset_bottom = 360.0
+texture = ExtResource("2_nkys2")
+
+[node name="Homework" type="Button" parent="Control/TodoList"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 265.41263
+offset_top = 17.364761
+offset_right = 348.6369
+offset_bottom = 55.4653
+rotation = -0.21931797
+mouse_default_cursor_shape = 2
+
+[node name="Chores" type="Button" parent="Control/TodoList"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 280.0
+offset_top = 65.00001
+offset_right = 363.22427
+offset_bottom = 103.10055
+rotation = -0.21931797
+mouse_default_cursor_shape = 2
+
+[node name="Work" type="Button" parent="Control/TodoList"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 284.67175
+offset_top = 130.79858
+offset_right = 382.27634
+offset_bottom = 198.64314
+rotation = -0.23558651
+mouse_default_cursor_shape = 2
+
+[node name="HomeworkTick" type="TextureRect" parent="Control/TodoList"]
+visible = false
+layout_mode = 0
+offset_left = 331.0
+offset_top = 8.0
+offset_right = 352.0
+offset_bottom = 32.0
+texture = ExtResource("3_s6o25")
+expand_mode = 1
+
+[node name="ChoresTick" type="TextureRect" parent="Control/TodoList"]
+visible = false
+layout_mode = 0
+offset_left = 338.0
+offset_top = 57.0
+offset_right = 359.0
+offset_bottom = 81.0
+rotation = -0.26077813
+texture = ExtResource("3_s6o25")
+expand_mode = 1
+
+[node name="WorkTick" type="TextureRect" parent="Control/TodoList"]
+visible = false
+layout_mode = 0
+offset_left = 355.0
+offset_top = 141.00003
+offset_right = 384.1456
+offset_bottom = 176.34102
+rotation = -0.14283746
+texture = ExtResource("3_s6o25")
+expand_mode = 1
+
+[node name="FunIdea" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_left = 344.0
+offset_top = 40.0
+offset_right = 593.0
+offset_bottom = 271.0
+pivot_offset = Vector2(125, 116)
+texture = SubResource("AtlasTexture_qnihq")
+
+[node name="Idea" type="TextureButton" parent="Control/FunIdea"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -40.5
-offset_top = -15.5
-offset_right = 40.5
-offset_bottom = 15.5
+offset_left = -68.5
+offset_top = -75.5
+offset_right = 79.5
+offset_bottom = 42.5
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-text = "Test level"
+pivot_offset = Vector2(74.5, 59.5)
+texture_normal = ExtResource("4_s6o25")
 
-[connection signal="pressed" from="Control/TestLevel" to="." method="_on_test_level_pressed"]
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="pressed" from="Control/TodoList/Homework" to="." method="_on_homework_pressed"]
+[connection signal="pressed" from="Control/TodoList/Chores" to="." method="_on_chores_pressed"]
+[connection signal="pressed" from="Control/TodoList/Work" to="." method="_on_work_pressed"]
+[connection signal="pressed" from="Control/FunIdea/Idea" to="." method="_on_idea_pressed"]

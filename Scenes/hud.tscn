@@ -79,7 +79,6 @@ offset_right = 1.0
 offset_bottom = 33.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "15"
 label_settings = SubResource("LabelSettings_t1xeu")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -120,5 +119,27 @@ value = 100.0
 nine_patch_stretch = true
 texture_under = ExtResource("7_4f5kr")
 texture_progress = ExtResource("8_piegi")
+
+[node name="ConcentrationChange" type="Label" parent="Control"]
+visible = false
+layout_mode = 0
+offset_left = 408.0
+offset_top = 264.0
+offset_right = 544.0
+offset_bottom = 287.0
+text = "-50 concentration"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TimeChange" type="Label" parent="Control"]
+visible = false
+layout_mode = 0
+offset_left = 56.0
+offset_top = 264.0
+offset_right = 192.0
+offset_bottom = 287.0
+text = "-50 concentration"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [editable path="Control/UI/Windows"]

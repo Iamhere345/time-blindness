@@ -4,6 +4,8 @@ extends CanvasLayer
 @onready var concentration_img: TextureRect = $Control/UI/Concentration
 @onready var time_bar: TextureProgressBar = $Control/UI/TimeBar
 @onready var windows: TextureRect = $Control/UI/Windows
+@onready var concentration_change = $Control/ConcentrationChange
+@onready var time_change = $Control/TimeChange
 
 var timer: float = 10.0
 var timer_active: bool = false
@@ -28,8 +30,9 @@ func set_concentration(new: int):
 	
 	print("Concentration: %s index: %s" % [concentration, roundi(float(concentration) / 20.0)])
 	
-	concentration_img.set_index(4 - floor(float(concentration) / 20.0))
+	concentration_img.set_index(5 - floor(float(concentration) / 20.0))
 	
+	#await change_tween(concentration_change)
 
 func set_world_time(new: int):
 	world_time = new
@@ -48,3 +51,17 @@ func stop_timer():
 func set_timer_paused(paused: bool):
 	print("hud timer paused: %s" % paused)
 	timer_paused = paused
+
+func change_tween(label: Label):
+	await get_tree().create_timer(2.0).timeout
+	label.visible = true
+
+	var tween = label.create_tween().set_parallel(true)
+	tween.tween_property(label, "modulate", Color(1.0, 1.0, 1.0, 0.0), 1.0)
+	tween.tween_property(label, "position:y", label.position.y - 50.0, 1.0)
+	tween.tween_callback(func():
+		print("done")
+		label.visible = false
+		label.modulate = Color(1.0, 1.0, 1.0, 1.0)
+		label.global_position.y = label.global_position.y + 50.0
+	).set_delay(1.0)

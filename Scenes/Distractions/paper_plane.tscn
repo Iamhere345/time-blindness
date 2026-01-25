@@ -1,0 +1,66 @@
+[gd_scene load_steps=10 format=3 uid="uid://dhj624sury23r"]
+
+[ext_resource type="Script" uid="uid://dqvbqqcmlqurq" path="res://Scripts/paper_plane.gd" id="1_0wpr3"]
+[ext_resource type="Texture2D" uid="uid://dmr4lo7hkfc2u" path="res://Assets/Images/Distractions/paper-plane.png" id="1_nsq1g"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0wpr3"]
+atlas = ExtResource("1_nsq1g")
+region = Rect2(0, 0, 640, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5fojr"]
+atlas = ExtResource("1_nsq1g")
+region = Rect2(640, 0, 640, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cnjuh"]
+atlas = ExtResource("1_nsq1g")
+region = Rect2(1280, 0, 640, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n4huk"]
+atlas = ExtResource("1_nsq1g")
+region = Rect2(1920, 0, 640, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vw4y5"]
+atlas = ExtResource("1_nsq1g")
+region = Rect2(2560, 0, 640, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dbxrp"]
+atlas = ExtResource("1_nsq1g")
+region = Rect2(3200, 0, 640, 360)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_02ybe"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0wpr3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5fojr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cnjuh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n4huk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vw4y5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dbxrp")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="PaperPlane" type="Node2D"]
+script = ExtResource("1_0wpr3")
+
+[node name="PaperPlane" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_02ybe")
+autoplay = "default"
+frame = 5
+frame_progress = 1.0
+centered = false
+
+[connection signal="animation_finished" from="PaperPlane" to="." method="_on_animated_sprite_2d_animation_finished"]

@@ -2,6 +2,8 @@ extends Node2D
 
 const RACK_PADDING: float = 30.0
 
+@export var cursor: Texture
+
 @onready var sink = $Sink
 @onready var rack_shape = $DishRack/CollisionShape2D
 
@@ -11,6 +13,8 @@ var items_cleaned: int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	#Input.set_custom_mouse_cursor(cursor, Input.CURSOR_ARROW, Vector2(64.0, 64.0))
+	
 	for child: Node2D in get_children():
 		if child.is_in_group("dishes"):
 			var area_2d: Area2D = child.get_child(0)
@@ -32,13 +36,13 @@ func _on_sink_area_entered(area: Area2D) -> void:
 	
 	if item.is_in_group("dishes"):
 		item.modulate = Color.AQUA
-		item.add_to_group("washed_dish")
+		item.add_to_group("washed_dishes")
 
 
 func _on_dish_rack_area_entered(area: Area2D) -> void:
 	var item: Sprite2D = area.get_parent()
 	
-	if item.is_in_group("washed_dish"):
+	if item.is_in_group("washed_dishes"):
 		grabbed = false
 		grabbed_item = null
 		
@@ -49,5 +53,5 @@ func _on_dish_rack_area_entered(area: Area2D) -> void:
 		
 		items_cleaned += 1
 		
-		if items_cleaned >= 4:
+		if items_cleaned >= 6:
 			Globals.minigame_finished.emit()

@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://dw0a4un0yjbl2"]
+[gd_scene load_steps=10 format=3 uid="uid://dw0a4un0yjbl2"]
 
 [ext_resource type="Texture2D" uid="uid://dbb0d632jj6jj" path="res://Assets/Images/Distractions/Plate.png" id="1_hua6p"]
 [ext_resource type="Script" uid="uid://cw1uvm464sdpo" path="res://Scripts/burger_distraction.gd" id="2_8b5k0"]
 [ext_resource type="Texture2D" uid="uid://bkqrfx7uvnhbf" path="res://Assets/Images/Distractions/Burger-sheet.png" id="3_fkmr0"]
+[ext_resource type="AudioStream" uid="uid://5foui0em2kuh" path="res://Assets/Audio/Burger.mp3" id="4_8b5k0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8s8ip"]
 atlas = ExtResource("3_fkmr0")
@@ -96,5 +97,8 @@ texture_normal = SubResource("AtlasTexture_8s8ip")
 libraries = {
 &"": SubResource("AnimationLibrary_w16se")
 }
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_8b5k0")
 
 [connection signal="pressed" from="Burger" to="." method="_on_burger_pressed"]

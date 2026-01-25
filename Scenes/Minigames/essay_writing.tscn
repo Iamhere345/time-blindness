@@ -1,10 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://c6iglrw7vihjs"]
+[gd_scene load_steps=5 format=3 uid="uid://c6iglrw7vihjs"]
 
 [ext_resource type="Script" uid="uid://c7ysa51534bbb" path="res://Scripts/essay_writing.gd" id="1_wj40v"]
 [ext_resource type="Texture2D" uid="uid://dlp2rb8gkpxjs" path="res://Assets/Images/Essay/essay-bg.png" id="2_ki6pc"]
+[ext_resource type="FontFile" uid="uid://cbpu6v21sqcde" path="res://Assets/Resources/Sigmabet-Regular.ttf" id="3_uovt4"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ki6pc"]
-line_spacing = 0.0
+line_spacing = 5.0
+font = ExtResource("3_uovt4")
 font_size = 11
 font_color = Color(0, 0, 0, 1)
 outline_color = Color(0, 0, 0, 1)

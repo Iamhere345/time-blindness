@@ -1,0 +1,44 @@
+[gd_resource type="SpriteFrames" load_steps=6 format=3 uid="uid://cjtb6ps8wfk2m"]
+
+[ext_resource type="Texture2D" uid="uid://x0brllpboaa8" path="res://Assets/Images/Vacuuming/dust-sheet.png" id="1_fl7m6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cy2qi"]
+atlas = ExtResource("1_fl7m6")
+region = Rect2(0, 0, 101, 51)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tfb6y"]
+atlas = ExtResource("1_fl7m6")
+region = Rect2(0, 0, 101, 51)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mv85u"]
+atlas = ExtResource("1_fl7m6")
+region = Rect2(101, 0, 101, 51)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xxcce"]
+atlas = ExtResource("1_fl7m6")
+region = Rect2(202, 0, 101, 51)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cy2qi")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tfb6y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mv85u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xxcce")
+}],
+"loop": false,
+"name": &"vacuum",
+"speed": 5.0
+}]

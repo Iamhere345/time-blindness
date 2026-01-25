@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://de0e5hpw8qfmp"]
+[gd_scene load_steps=11 format=3 uid="uid://de0e5hpw8qfmp"]
 
 [ext_resource type="Texture2D" uid="uid://p15rgauar768" path="res://Assets/Images/Tills/tills_backround.png" id="1_bwp2q"]
 [ext_resource type="Script" uid="uid://sn1nlbuhycq7" path="res://Scripts/tills.gd" id="1_byjlw"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dadohqlt4qjhy" path="res://Assets/Images/Tills/itemregisterCard.png" id="3_byjlw"]
 [ext_resource type="Texture2D" uid="uid://up6l5i4aikvv" path="res://Assets/Images/Tills/itemregisterGnome.png" id="4_kky0n"]
 [ext_resource type="Texture2D" uid="uid://doeurtqsbdd3p" path="res://Assets/Images/Tills/mango.png" id="5_23mk3"]
+[ext_resource type="AudioStream" uid="uid://cuufe1favcgrj" path="res://Assets/Audio/scanner-beep.mp3" id="7_kky0n"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_byjlw"]
 radius = 40.898495
@@ -68,5 +69,10 @@ shape = SubResource("CircleShape2D_kky0n")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Scanner"]
 position = Vector2(269.5, 172)
 shape = SubResource("RectangleShape2D_kky0n")
+
+[node name="BeepSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_kky0n")
+volume_db = -5.0
+attenuation = 1.5157139
 
 [connection signal="area_entered" from="Scanner" to="." method="_on_scanner_area_entered"]

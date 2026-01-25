@@ -2,10 +2,12 @@ extends CanvasLayer
 
 @onready var control = $Control
 
-var distractions: Array = ["burger", "phone"]
+var distractions: Array = ["burger", "phone", "paper_plane", "guy"]
 var active_distractions: Dictionary = {
 	"burger": false,
-	"phone": false
+	"phone": false,
+	"paper_plane": false,
+	"guy": false
 }
 
 var concentration: int = 100
@@ -41,7 +43,7 @@ func new_distraction():
 
 func _on_distraction_interval_timeout() -> void:
 	if distractions_enabled:
-		var rand_num = randi_range(0, 100)
+		var rand_num = randi_range(0, 120)
 		
 		print("distraction: " + str(rand_num))
 		

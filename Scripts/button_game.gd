@@ -4,6 +4,10 @@ extends Node
 @export var cursor_normal: Resource
 @export var cursor_hover: Resource
 
+@export var screen_wipe: AnimationPlayer
+@export var train_audio: AudioStreamPlayer2D
+@export var myki_audio: AudioStreamPlayer2D
+
 var level_finished = false
 
 # Called when the node enters the scene tree for the first time.
@@ -25,5 +29,13 @@ func mouse_exited():
 
 func on_clicked(_viewport: Node, event: InputEvent, _shapde_idx: int):
 	if event is InputEventMouseButton && event.is_pressed() and not level_finished:
+		level_finished = true
 		print("AAAAA")
+		
+		myki_audio.play()
+		
+		screen_wipe.play("screen_wipe")
+		train_audio.play()
+		await screen_wipe.animation_finished
+		
 		Globals.minigame_finished.emit()
