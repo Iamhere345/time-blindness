@@ -1,8 +1,12 @@
 extends Node2D
 
+@onready var flapping = $flapping
+@onready var chirp = $chirp
+
 var birds_found: Array = [false, false, false]
 @onready var birds = [$Bird1, $Bird2, $Bird3]
 @onready var telescope = $Telescope
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -27,6 +31,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func scare_bird(bird: AnimatedSprite2D):
 	bird.play("flying")
-	
+	flapping.play()
+	chirp.play()
 	var tween = bird.create_tween()
 	tween.tween_property(bird, "position", Vector2(randf_range(bird.position.x - 50, bird.position.x + 50), -20), 2.0)

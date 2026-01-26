@@ -5,7 +5,7 @@ signal level_selected(name: String)
 @export var tick: Texture
 @export var cross: Texture
 
-@onready var ideas = ["basketball", "birdwatching"]
+@onready var ideas = ["birdwatching","basketball","platformer"]
 
 @onready var homework_tick = $Control/TodoList/HomeworkTick
 @onready var chores_tick = $Control/TodoList/ChoresTick

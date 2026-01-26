@@ -4,6 +4,8 @@ const RACK_PADDING: float = 30.0
 
 @export var cursor: Texture
 
+@onready var water = $water
+
 @onready var sink = $Sink
 @onready var rack_shape = $DishRack/CollisionShape2D
 
@@ -36,6 +38,7 @@ func _on_sink_area_entered(area: Area2D) -> void:
 	
 	if item.is_in_group("dishes"):
 		item.frame = 1
+		water.play()
 		item.add_to_group("washed_dishes")
 
 

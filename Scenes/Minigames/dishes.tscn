@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://bpvj70caebera"]
+[gd_scene load_steps=11 format=3 uid="uid://bpvj70caebera"]
 
 [ext_resource type="Script" uid="uid://22jch0w756wm" path="res://Scripts/dishes.gd" id="1_cswo4"]
 [ext_resource type="Texture2D" uid="uid://b2emihnbxcw7y" path="res://Assets/Images/Dishes/dishes-bg.png" id="2_hlpca"]
 [ext_resource type="Texture2D" uid="uid://b33ee1xyv1lge" path="res://Assets/Images/Dishes/cursor-dishwashing.png" id="2_qoags"]
 [ext_resource type="Texture2D" uid="uid://cgrtfq28yj3ps" path="res://Assets/Images/Dishes/dishes-plate.png" id="3_it4f8"]
 [ext_resource type="Texture2D" uid="uid://dui5wciqh5hfr" path="res://Assets/Images/Dishes/dishes-fork.png" id="4_it4f8"]
+[ext_resource type="AudioStream" uid="uid://kov53jbexwjg" path="res://Assets/Audio/water-splash-199583.mp3" id="6_v3k7q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kky0n"]
 size = Vector2(191, 216)
@@ -84,7 +85,10 @@ hframes = 2
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_qoags")
 
-[connection signal="area_entered" from="Sink" to="." method="_on_sink_area_entered"]
+[node name="water" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_v3k7q")
+
 [connection signal="area_entered" from="Sink" to="." method="_on_scanner_area_entered"]
+[connection signal="area_entered" from="Sink" to="." method="_on_sink_area_entered"]
 [connection signal="body_entered" from="Sink" to="." method="_on_scanner_body_entered"]
 [connection signal="area_entered" from="DishRack" to="." method="_on_dish_rack_area_entered"]

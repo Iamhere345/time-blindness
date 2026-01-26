@@ -1,0 +1,80 @@
+[gd_scene load_steps=12 format=3 uid="uid://cwwphtpj83qbe"]
+
+[ext_resource type="Texture2D" uid="uid://dwvyyly2mrfpy" path="res://Assets/Images/platformer/platfromerbackround.png" id="1_22v2n"]
+[ext_resource type="Script" uid="uid://c5db1nj5foycd" path="res://Scripts/platformercontrol.gd" id="1_whmdf"]
+[ext_resource type="Script" uid="uid://euy6tb8v21dk" path="res://Scripts/platformer.gd" id="2_whmdf"]
+[ext_resource type="Texture2D" uid="uid://cy6yp5v2guy8t" path="res://Assets/Images/platformer/characterplatformer.png" id="3_kqm6o"]
+[ext_resource type="AudioStream" uid="uid://cferx04skhykb" path="res://Assets/Audio/jump.mp3" id="5_kqm6o"]
+[ext_resource type="AudioStream" uid="uid://dh4kmm3j8nrp" path="res://Assets/Audio/yippee!!.mp3" id="6_gb4pn"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_giycb"]
+radius = 27.0
+height = 64.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3aaoc"]
+atlas = ExtResource("3_kqm6o")
+region = Rect2(0, 0, 75, 75)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x5bwr"]
+atlas = ExtResource("3_kqm6o")
+region = Rect2(75, 0, 75, 75)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2olc6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3aaoc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x5bwr")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kqm6o"]
+size = Vector2(47, 102)
+
+[node name="platformer" type="Node2D"]
+position = Vector2(320, 140)
+script = ExtResource("1_whmdf")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_22v2n")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Sprite2D"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Sprite2D/StaticBody2D"]
+polygon = PackedVector2Array(48, 42, 45, 85, -255, 81, -258, -160, -298, -164, -292, 122, 291, 131, 296, -106, 257, -105, 252, 84, 244, 85, 121, 84, 117, 41)
+
+[node name="CharacterWalk2D" type="CharacterBody2D" parent="."]
+visibility_layer = 3
+position = Vector2(-177, 44)
+script = ExtResource("2_whmdf")
+
+[node name="CollisionShapeWalk2D" type="CollisionShape2D" parent="CharacterWalk2D"]
+position = Vector2(0, 1)
+shape = SubResource("CapsuleShape2D_giycb")
+
+[node name="walking" type="AnimatedSprite2D" parent="CharacterWalk2D"]
+position = Vector2(1, -5)
+sprite_frames = SubResource("SpriteFrames_2olc6")
+animation = &"walk"
+frame_progress = 0.40680405
+
+[node name="bounce" type="AudioStreamPlayer2D" parent="CharacterWalk2D"]
+position = Vector2(177, -44)
+stream = ExtResource("5_kqm6o")
+
+[node name="flag" type="Area2D" parent="."]
+position = Vector2(222, 34)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="flag"]
+position = Vector2(-2, -6)
+shape = SubResource("RectangleShape2D_kqm6o")
+
+[node name="hurray" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_gb4pn")
+
+[connection signal="body_shape_entered" from="flag" to="." method="_on_flag_body_shape_entered"]

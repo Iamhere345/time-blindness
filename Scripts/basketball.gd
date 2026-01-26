@@ -1,4 +1,8 @@
 extends Node2D
+# cause this script is used for both trash and bball minigames, the trash soundeffects are labeled the same as
+#the bball soundeffects but they are different sound effects
+@onready var cheer = $cheer
+@onready var boo = $boo
 
 @export var MOVE_SPEED: float = 1000.0
 
@@ -42,13 +46,14 @@ func drop_ball():
 
 
 func _on_goal_trigger_body_entered(_body: Node2D) -> void:
+	cheer.play()
 	Globals.minigame_finished.emit()
-
+	
 
 func _on_fail_trigger_body_entered(_body: Node2D) -> void:
 	phys_ball.position.y = -100.0
 	phys_ball.set_deferred("freeze", true)
-	
+	boo.play()
 	player.play("default")
 	ball_shot = false
 	
