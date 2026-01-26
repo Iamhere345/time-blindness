@@ -5,7 +5,7 @@ extends CanvasLayer
 @onready var playstyle_label: Label = $Control/Playstyle
 @onready var anim_player = $Control/AnimationPlayer
 
-func end_game(player_won: bool, levels_completed: int, concentration: int, avg_time_left: int):
+func end_game(player_won: bool, levels_completed: int, concentration: int, avg_time_left: float):
 	visible = true
 	
 	if player_won:
@@ -29,5 +29,24 @@ func end_game(player_won: bool, levels_completed: int, concentration: int, avg_t
 	score_label.text = "Final Score: %s" % score
 	
 	var playstyle = ""
+	
+	if concentration > 40 and avg_time_left > 0.2:
+		playstyle = "neurotypical"
+	elif concentration < 20:
+		playstyle = "scatterbrained"
+	elif avg_time_left < 0.15:
+		playstyle = "procrastinator"
+	elif concentration > 40:
+		playstyle = "medicated"
+	elif avg_time_left > 0.2:
+		playstyle = "organised"
+	elif levels_completed == 0:
+		playstyle = "hopeless"
+	else:
+		playstyle = "nerodivergent"
+	
+	playstyle_label.text = "Playstyle: %s"  % playstyle
+	
+	print("average time left: %s" % avg_time_left)
 	
 	anim_player.play("fade_in")

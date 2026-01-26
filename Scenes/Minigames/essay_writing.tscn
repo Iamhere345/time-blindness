@@ -5,9 +5,9 @@
 [ext_resource type="FontFile" uid="uid://cbpu6v21sqcde" path="res://Assets/Resources/Sigmabet-Regular.ttf" id="3_uovt4"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ki6pc"]
-line_spacing = 5.0
+line_spacing = 7.0
 font = ExtResource("3_uovt4")
-font_size = 11
+font_size = 10
 font_color = Color(0, 0, 0, 1)
 outline_color = Color(0, 0, 0, 1)
 
@@ -32,9 +32,9 @@ texture = ExtResource("2_ki6pc")
 
 [node name="Essay" type="Label" parent="Control"]
 layout_mode = 0
-offset_left = 240.0
-offset_top = 33.0
-offset_right = 405.0
-offset_bottom = 255.0
+offset_left = 241.0
+offset_top = 35.0
+offset_right = 404.0
+offset_bottom = 294.0
 label_settings = SubResource("LabelSettings_ki6pc")
 autowrap_mode = 2

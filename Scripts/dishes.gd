@@ -13,7 +13,7 @@ var items_cleaned: int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	#Input.set_custom_mouse_cursor(cursor, Input.CURSOR_ARROW, Vector2(64.0, 64.0))
+	#Input.set_custom_mouse_cursor(cursor, Input.CURSOR_ARROW)
 	
 	for child: Node2D in get_children():
 		if child.is_in_group("dishes"):
@@ -35,7 +35,7 @@ func _on_sink_area_entered(area: Area2D) -> void:
 	var item: Sprite2D = area.get_parent()
 	
 	if item.is_in_group("dishes"):
-		item.modulate = Color.AQUA
+		item.frame = 1
 		item.add_to_group("washed_dishes")
 
 
@@ -53,5 +53,5 @@ func _on_dish_rack_area_entered(area: Area2D) -> void:
 		
 		items_cleaned += 1
 		
-		if items_cleaned >= 6:
+		if items_cleaned >= 4:
 			Globals.minigame_finished.emit()

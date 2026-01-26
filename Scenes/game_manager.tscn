@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://ciytuj1x3vxdj"]
+[gd_scene load_steps=4 format=3 uid="uid://ciytuj1x3vxdj"]
 
 [ext_resource type="Script" uid="uid://cg5gd2l2636d" path="res://Scripts/game_manager.gd" id="1_oj352"]
 [ext_resource type="PackedScene" uid="uid://cj1y7720rhjmj" path="res://Scenes/screen_transition.tscn" id="2_e5fcp"]
+[ext_resource type="AudioStream" uid="uid://dxlxhpb1g6fi6" path="res://Assets/Audio/clock.mp3" id="3_sq00h"]
 
 [node name="GameManager" type="Node2D"]
 script = ExtResource("1_oj352")
@@ -12,4 +13,11 @@ script = ExtResource("1_oj352")
 layer = 2
 visible = false
 
+[node name="PanicTimer" type="Timer" parent="."]
+
+[node name="ClockTick" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_sq00h")
+volume_db = -15.0
+
 [connection signal="timeout" from="MinigameTimer" to="." method="_on_minigame_timer_timeout"]
+[connection signal="timeout" from="PanicTimer" to="." method="_on_panic_timer_timeout"]

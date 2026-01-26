@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://drfyfkbvpv6mv"]
+[gd_scene load_steps=9 format=3 uid="uid://drfyfkbvpv6mv"]
 
 [ext_resource type="Script" uid="uid://ct6rnksc3upm0" path="res://Scripts/level_select.gd" id="1_1fiak"]
 [ext_resource type="Texture2D" uid="uid://dwt4mle1o56ge" path="res://Assets/Images/LevelSelect/task_list.png" id="2_nkys2"]
 [ext_resource type="Texture2D" uid="uid://bpw1jjx3meajx" path="res://Assets/Images/LevelSelect/cloud-sheet.png" id="3_72w8f"]
 [ext_resource type="Texture2D" uid="uid://by1ucyuc7najl" path="res://Assets/Images/Maths/cross.png" id="3_kb5mc"]
 [ext_resource type="Texture2D" uid="uid://blc8otgfsq07s" path="res://Assets/Images/Maths/tick.png" id="3_s6o25"]
+[ext_resource type="Texture2D" uid="uid://bctbu8phrcr45" path="res://Assets/Images/LevelSelect/select-backround.png" id="4_kb5mc"]
 [ext_resource type="Texture2D" uid="uid://g1fxjh2t83hk" path="res://Assets/Images/LevelSelect/birdwatching-idea.png" id="4_s6o25"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qnihq"]
@@ -23,6 +24,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("4_kb5mc")
 
 [node name="TodoList" type="TextureRect" parent="Control"]
 layout_mode = 0

@@ -1,125 +1,106 @@
-[gd_scene load_steps=12 format=3 uid="uid://cg362k5idj11o"]
+[gd_scene load_steps=16 format=3 uid="uid://cg362k5idj11o"]
 
 [ext_resource type="Script" uid="uid://b3u25pj1fsf3d" path="res://Scripts/clean_room.gd" id="1_gtuti"]
-[ext_resource type="Texture2D" uid="uid://p15rgauar768" path="res://Assets/Images/Tills/tills_backround.png" id="2_tsdua"]
-[ext_resource type="Texture2D" uid="uid://bvklqyvgavtlq" path="res://Assets/Images/Tills/itemregisterBauble.png" id="3_d3x6y"]
+[ext_resource type="Texture2D" uid="uid://ban2n7ccpm8kv" path="res://Assets/Images/CleanRoom/room_backround.png" id="2_tsdua"]
+[ext_resource type="Texture2D" uid="uid://42nmbjggspjc" path="res://Assets/Images/CleanRoom/tshirt.png" id="3_i4tu7"]
 [ext_resource type="Script" uid="uid://djbhcwsg57d5d" path="res://Scripts/clickable_sprite.gd" id="4_i4tu7"]
-[ext_resource type="Texture2D" uid="uid://dadohqlt4qjhy" path="res://Assets/Images/Tills/itemregisterCard.png" id="5_xb4lf"]
-[ext_resource type="Texture2D" uid="uid://up6l5i4aikvv" path="res://Assets/Images/Tills/itemregisterGnome.png" id="6_exh0v"]
-[ext_resource type="Texture2D" uid="uid://doeurtqsbdd3p" path="res://Assets/Images/Tills/mango.png" id="7_e20ti"]
+[ext_resource type="Texture2D" uid="uid://bkjpap1nradym" path="res://Assets/Images/CleanRoom/pants.png" id="5_i4tu7"]
+[ext_resource type="Texture2D" uid="uid://clhehkedjuhj0" path="res://Assets/Images/CleanRoom/hat.png" id="6_d3x6y"]
+[ext_resource type="Texture2D" uid="uid://cege2s2s0hccq" path="res://Assets/Images/CleanRoom/shirt-placed.png" id="8_d3x6y"]
+[ext_resource type="Texture2D" uid="uid://21viu1kji2po" path="res://Assets/Images/CleanRoom/pants-placed.png" id="9_i4tu7"]
+[ext_resource type="Texture2D" uid="uid://clcvngabgihs8" path="res://Assets/Images/CleanRoom/hat-placed.png" id="10_xb4lf"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_byjlw"]
-radius = 40.898495
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i4tu7"]
+size = Vector2(33.5, 34)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_kky0n"]
-radius = 23.133444
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xb4lf"]
+size = Vector2(44, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_exh0v"]
+size = Vector2(35.812744, 42.82614)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kky0n"]
-size = Vector2(57, 216)
+size = Vector2(124.5, 197)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d3x6y"]
+size = Vector2(126, 117.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5txv5"]
-size = Vector2(57, 216)
+size = Vector2(56, 137)
 
 [node name="CleanRoom" type="Node2D"]
 script = ExtResource("1_gtuti")
 
-[node name="TillsBackround" type="Sprite2D" parent="."]
+[node name="RoomBackground" type="Sprite2D" parent="."]
 texture = ExtResource("2_tsdua")
 centered = false
 
 [node name="Item1" type="Sprite2D" parent="." groups=["till_items"]]
-position = Vector2(573, 106.00001)
-scale = Vector2(0.7839506, 0.7839506)
-texture = ExtResource("3_d3x6y")
+position = Vector2(539, 198)
+texture = ExtResource("3_i4tu7")
 script = ExtResource("4_i4tu7")
 
 [node name="Area2D" type="Area2D" parent="Item1"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Item1/Area2D"]
-shape = SubResource("CircleShape2D_byjlw")
+position = Vector2(-2.75, 4)
+shape = SubResource("RectangleShape2D_i4tu7")
 
 [node name="Item2" type="Sprite2D" parent="." groups=["till_items"]]
-position = Vector2(507, 113)
-texture = ExtResource("5_xb4lf")
+position = Vector2(555, 250)
+texture = ExtResource("5_i4tu7")
 
 [node name="Area2D" type="Area2D" parent="Item2"]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Item2/Area2D"]
-polygon = PackedVector2Array(-59, -23, -14, -56, 57, 17, 15, 55)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Item2/Area2D"]
+position = Vector2(-1, 0)
+shape = SubResource("RectangleShape2D_xb4lf")
 
 [node name="Item3" type="Sprite2D" parent="." groups=["till_items"]]
-position = Vector2(387, 102.000015)
+position = Vector2(607, 198)
 rotation = -0.40032256
 scale = Vector2(0.6161963, 0.6161963)
-texture = ExtResource("6_exh0v")
+texture = ExtResource("6_d3x6y")
 
 [node name="Area2D" type="Area2D" parent="Item3"]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Item3/Area2D"]
-polygon = PackedVector2Array(-46.45514, 93.12128, 40.345337, 108.706696, 55.128967, -13.676849, -1.7731323, -108.243744, -53.574097, -19.14679)
-
-[node name="Item4" type="Sprite2D" parent="." groups=["till_items"]]
-position = Vector2(459, 184)
-scale = Vector2(1.6, 1.6)
-texture = ExtResource("7_e20ti")
-
-[node name="Area2D" type="Area2D" parent="Item4"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Item4/Area2D"]
-shape = SubResource("CircleShape2D_kky0n")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Item3/Area2D"]
+position = Vector2(0.4310913, 1.81073)
+shape = SubResource("RectangleShape2D_exh0v")
 
 [node name="Trigger1" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Trigger1"]
-position = Vector2(29, 172)
+position = Vector2(96.75, 164.5)
 shape = SubResource("RectangleShape2D_kky0n")
 
 [node name="Trigger2" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Trigger2"]
-position = Vector2(107, 172)
-shape = SubResource("RectangleShape2D_5txv5")
+position = Vector2(266, 81)
+shape = SubResource("RectangleShape2D_d3x6y")
 
 [node name="Trigger3" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Trigger3"]
-position = Vector2(186, 172)
-shape = SubResource("RectangleShape2D_5txv5")
-
-[node name="Trigger4" type="Area2D" parent="."]
-position = Vector2(84, 0)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Trigger4"]
-position = Vector2(186, 172)
+position = Vector2(454, 96.5)
 shape = SubResource("RectangleShape2D_5txv5")
 
 [node name="PlacedItem1" type="Sprite2D" parent="."]
 visible = false
-modulate = Color(0.9999998, 0.12469535, 0.40500125, 1)
-position = Vector2(26, 102.99997)
-scale = Vector2(0.5123457, 0.5123457)
-texture = ExtResource("3_d3x6y")
+texture = ExtResource("8_d3x6y")
+centered = false
 
 [node name="PlacedItem2" type="Sprite2D" parent="."]
 visible = false
-modulate = Color(0.9999998, 0.12469535, 0.40500125, 1)
-position = Vector2(106.99999, 96.99999)
-scale = Vector2(0.5123456, 0.5123456)
-texture = ExtResource("5_xb4lf")
+texture = ExtResource("9_i4tu7")
+centered = false
 
 [node name="PlacedItem3" type="Sprite2D" parent="."]
 visible = false
 modulate = Color(0.9999998, 0.12469535, 0.40500125, 1)
-position = Vector2(179.00002, 105.00001)
-scale = Vector2(0.31980926, 0.31980926)
-texture = ExtResource("6_exh0v")
-
-[node name="PlacedItem4" type="Sprite2D" parent="."]
-visible = false
-modulate = Color(0.9999998, 0.12469535, 0.40500125, 1)
-position = Vector2(272, 100.00001)
-scale = Vector2(1.1199044, 1.1199044)
-texture = ExtResource("7_e20ti")
+texture = ExtResource("10_xb4lf")
+centered = false
 
 [connection signal="area_entered" from="Trigger1" to="." method="_on_scanner_area_entered"]
 [connection signal="body_entered" from="Trigger1" to="." method="_on_scanner_body_entered"]
@@ -127,5 +108,3 @@ texture = ExtResource("7_e20ti")
 [connection signal="body_entered" from="Trigger2" to="." method="_on_scanner_body_entered"]
 [connection signal="area_entered" from="Trigger3" to="." method="_on_scanner_area_entered"]
 [connection signal="body_entered" from="Trigger3" to="." method="_on_scanner_body_entered"]
-[connection signal="area_entered" from="Trigger4" to="." method="_on_scanner_area_entered"]
-[connection signal="body_entered" from="Trigger4" to="." method="_on_scanner_body_entered"]

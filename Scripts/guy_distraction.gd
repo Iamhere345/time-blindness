@@ -12,7 +12,7 @@ func _ready() -> void:
 	guy.play("walk")
 	
 	var tween = guy.create_tween()
-	tween.tween_property(guy, "position", Vector2(randf_range(50.0, 640.0 - 50.0), guy.position.y), 3.0)
+	tween.tween_property(guy, "position", Vector2(randf_range(50.0, 640.0 - 50.0), guy.position.y), 1.0)
 	tween.tween_callback(func():
 		guy.play("default")
 		guy.speed_scale = 0.0
@@ -35,5 +35,5 @@ func _on_area_2d_input_event(_viewport: Node, event: InputEvent, _shape_idx: int
 			guy.speed_scale = 1.0
 			
 			var tween = guy.create_tween()
-			tween.tween_property(guy, "position", Vector2(-75.0, guy.position.y), 3.0)
+			tween.tween_property(guy, "position", Vector2(-75.0, guy.position.y), 1.0)
 			tween.tween_callback(func(): queue_free())

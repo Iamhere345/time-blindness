@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://22jch0w756wm" path="res://Scripts/dishes.gd" id="1_cswo4"]
 [ext_resource type="Texture2D" uid="uid://b2emihnbxcw7y" path="res://Assets/Images/Dishes/dishes-bg.png" id="2_hlpca"]
-[ext_resource type="Texture2D" uid="uid://c430yvx7gtynh" path="res://Assets/Images/Dishes/dishes-cursor.png" id="2_qoags"]
-[ext_resource type="Texture2D" uid="uid://dc8x4pet5ykta" path="res://Assets/Images/Dishes/dishes-plate.png" id="3_it4f8"]
+[ext_resource type="Texture2D" uid="uid://b33ee1xyv1lge" path="res://Assets/Images/Dishes/cursor-dishwashing.png" id="2_qoags"]
+[ext_resource type="Texture2D" uid="uid://cgrtfq28yj3ps" path="res://Assets/Images/Dishes/dishes-plate.png" id="3_it4f8"]
 [ext_resource type="Texture2D" uid="uid://dui5wciqh5hfr" path="res://Assets/Images/Dishes/dishes-fork.png" id="4_it4f8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kky0n"]
@@ -16,7 +16,7 @@ size = Vector2(172, 278)
 radius = 74.00676
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qoags"]
-size = Vector2(20, 99)
+size = Vector2(31.112698, 99)
 
 [node name="Dishes" type="Node2D"]
 script = ExtResource("1_cswo4")
@@ -43,7 +43,6 @@ position = Vector2(82, 81)
 rotation = -0.5235988
 texture = ExtResource("3_it4f8")
 hframes = 2
-frame = 1
 
 [node name="Area2D" type="Area2D" parent="Plate"]
 
@@ -55,23 +54,10 @@ position = Vector2(151, 155)
 rotation = -2.6179938
 texture = ExtResource("3_it4f8")
 hframes = 2
-frame = 1
 
 [node name="Area2D" type="Area2D" parent="Plate2"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Plate2/Area2D"]
-shape = SubResource("CircleShape2D_qoags")
-
-[node name="Plate3" type="Sprite2D" parent="." groups=["dishes"]]
-position = Vector2(57, 230)
-rotation = -0.5235988
-texture = ExtResource("3_it4f8")
-hframes = 2
-frame = 1
-
-[node name="Area2D" type="Area2D" parent="Plate3"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Plate3/Area2D"]
 shape = SubResource("CircleShape2D_qoags")
 
 [node name="Fork" type="Sprite2D" parent="." groups=["dishes"]]
@@ -83,7 +69,7 @@ hframes = 2
 [node name="Area2D" type="Area2D" parent="Fork"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Fork/Area2D"]
-position = Vector2(0, -0.5)
+position = Vector2(1.4142075, -0.5000076)
 shape = SubResource("RectangleShape2D_qoags")
 
 [node name="Fork2" type="Sprite2D" parent="." groups=["dishes"]]
@@ -98,19 +84,7 @@ hframes = 2
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_qoags")
 
-[node name="Fork3" type="Sprite2D" parent="." groups=["dishes"]]
-position = Vector2(30.999992, 183)
-rotation = 0.5235988
-texture = ExtResource("4_it4f8")
-hframes = 2
-
-[node name="Area2D" type="Area2D" parent="Fork3"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Fork3/Area2D"]
-position = Vector2(0, -0.5)
-shape = SubResource("RectangleShape2D_qoags")
-
-[connection signal="area_entered" from="Sink" to="." method="_on_scanner_area_entered"]
 [connection signal="area_entered" from="Sink" to="." method="_on_sink_area_entered"]
+[connection signal="area_entered" from="Sink" to="." method="_on_scanner_area_entered"]
 [connection signal="body_entered" from="Sink" to="." method="_on_scanner_body_entered"]
 [connection signal="area_entered" from="DishRack" to="." method="_on_dish_rack_area_entered"]

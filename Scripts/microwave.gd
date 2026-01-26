@@ -4,9 +4,11 @@ extends Node2D
 @onready var timer: Label = $Control/Timer
 @onready var note: Label = $Control/TargetValue
 @onready var fish = $Fish
+@onready var beep_audio = $BeepAudio
+@onready var microwave_audio = $MicrowaveAudio
 
 var input_value = [0, 0, 0, 0]
-var target_value = [randi_range(0, 9), randi_range(0, 9), randi_range(0, 9), randi_range(0, 9)]
+var target_value = [randi_range(0, 6), randi_range(0, 6), randi_range(0, 5), randi_range(0, 9)]
 
 var level_finished = false
 
@@ -19,6 +21,7 @@ func _ready() -> void:
 
 func button_pressed(num: int, event: InputEvent):
 	if event is InputEventMouseButton and event.is_pressed():
+		beep_audio.play()
 		push_num(num)
 		display_time(timer, input_value)
 
@@ -33,12 +36,17 @@ func display_time(label: Label, values: Array):
 
 func _on_start_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.is_pressed() and not level_finished:
+		beep_audio.play()
+	
 		for i in range(4):
 			if input_value[i] != target_value[i]:
 				return
 		
 		level_finished = true
 		
+		microwave_audio.play()
 		fish.play("spin")
+		
+		await get_tree().create_timer(1.0).timeout
 		
 		Globals.minigame_finished.emit()

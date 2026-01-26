@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://cj1y7720rhjmj"]
+[gd_scene load_steps=9 format=3 uid="uid://cj1y7720rhjmj"]
 
 [ext_resource type="Script" uid="uid://c0dpkup4ig24x" path="res://Scripts/screen_transition.gd" id="1_cmets"]
 [ext_resource type="Texture2D" uid="uid://dcpjf0fkp3b1w" path="res://Assets/Images/Misc/transition.png" id="1_u83yi"]
 [ext_resource type="Texture2D" uid="uid://bw1yaqlmcn6be" path="res://Assets/Images/TransitionScreens/instr_mouse_click.png" id="3_cmets"]
+[ext_resource type="FontFile" uid="uid://cbpu6v21sqcde" path="res://Assets/Resources/Sigmabet-Regular.ttf" id="3_v3w16"]
 
 [sub_resource type="Animation" id="Animation_ag5lk"]
 length = 0.001
@@ -105,6 +106,7 @@ _data = {
 }
 
 [sub_resource type="LabelSettings" id="LabelSettings_cmets"]
+font = ExtResource("3_v3w16")
 font_size = 24
 
 [node name="ScreenTransition" type="CanvasLayer"]

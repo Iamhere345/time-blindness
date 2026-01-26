@@ -30,15 +30,17 @@ func set_concentration(new: int):
 	
 	print("Concentration: %s index: %s" % [concentration, roundi(float(concentration) / 20.0)])
 	
-	concentration_img.set_index(5 - floor(float(concentration) / 20.0))
+	concentration_img.set_index(clamp(4 - floor(float(concentration) / 20.0), 0, 4))
 	
 	#await change_tween(concentration_change)
 
 func set_world_time(new: int):
 	world_time = new
-	time_bar.value =  world_time
+	time_bar.value = world_time
 	
-	windows.set_index(10 - roundi(float(world_time) / 10.0))
+	print("world time index: 4 - (%s / 4.0) = %s" % [world_time, 4 - roundi(float(world_time) / 20.0)])
+	
+	windows.set_index(4 - roundi(float(world_time) / 20.0))
 
 func start_timer(time: float):
 	timer = time

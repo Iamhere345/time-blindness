@@ -1,9 +1,11 @@
 extends Node2D
 
-signal level_finished(time_taken: float, concentration_taken: int, out_of_time: bool)
+signal level_finished(time_taken: float, concentration_taken: int, out_of_time: bool, time_left: float)
 signal level_transition
 
 @onready var timer: Timer = $MinigameTimer
+@onready var panic_timer: Timer = $PanicTimer
+@onready var clock_tick: AudioStreamPlayer2D = $ClockTick
 @onready var screen_transition = $ScreenTransition
 
 var level: Dictionary
@@ -17,8 +19,9 @@ const levels = {
 		"concentration": -25,
 		"minigames": [
 			"maths",
-			"angles",
+			"book",
 			"essay_writing",
+			"angles",
 		]
 	},
 	"work": {
@@ -46,7 +49,7 @@ const levels = {
 	"birdwatching": {
 		"time_limit": 5.0,
 		"time_taken": 15.0,
-		"concentration": 20,
+		"concentration": 30,
 		"minigames": [
 			"birdwatching"
 		]
@@ -54,7 +57,7 @@ const levels = {
 	"basketball": {
 		"time_limit": 3.0,
 		"time_taken": 10.0,
-		"concentration": 15,
+		"concentration": 40,
 		"minigames": [
 			"basketball"
 		]
@@ -87,7 +90,7 @@ const minigames: Dictionary = {
 		"game_instr": "Shoot!"
 	},
 	"essay_writing": {
-		"input_instr": "instr_ad_space",
+		"input_instr": "instr_keyboard",
 		"game_instr": "Finish your essay!",
 	},
 	"maths": {
@@ -110,6 +113,10 @@ const minigames: Dictionary = {
 		"input_instr": "instr_ad_space",
 		"game_instr": "Take the rubbish out!",
 	},
+	"book": {
+		"input_instr": "instr_d",
+		"game_instr": "Read the book!",
+	}
 }
 
 func _ready() -> void:
@@ -120,6 +127,9 @@ func start_level(level_name: String) -> Array:
 	game_index = 0
 	
 	timer.start(level["time_limit"])
+	panic_timer.start(level["time_limit"] * 0.75)
+	
+	print("time: %s panic timer: %s" % [level["time_limit"], level["time_limit"] * 0.75])
 	
 	next_minigame()
 	
@@ -128,9 +138,9 @@ func start_level(level_name: String) -> Array:
 func next_minigame():
 	print("start next minigame")
 	
-	await transition_level()
-	
 	if game_index != len(level["minigames"]):
+		await transition_level(false, false)
+		
 		var next_game = level["minigames"][game_index] + ".tscn"
 		var new_minigame: PackedScene = load("res://Scenes/Minigames/" + next_game)
 		
@@ -139,12 +149,21 @@ func next_minigame():
 		
 		game_index += 1
 	else:
+		await transition_level(true, false)
+		
 		# level has finished; calculate time taken and fire signal
-		var time_taken = ((level["time_limit"] - timer.time_left) / level["time_limit"]) * level["time_taken"]
+		#var time_taken = ((level["time_limit"] - timer.time_left) / level["time_limit"]) * level["time_taken"]
+
+		var time_left = 1.0 - ((level["time_limit"] - timer.time_left) / level["time_limit"])
 
 		timer.stop()
+		panic_timer.stop()
+		clock_tick.stop()
 		
-		level_finished.emit(time_taken, level["concentration"], false)
+		
+		print("timer time left: %s" % time_left)
+		
+		level_finished.emit(level["time_taken"], level["concentration"], false, time_left)
 
 
 func _on_minigame_timer_timeout() -> void:
@@ -152,12 +171,15 @@ func _on_minigame_timer_timeout() -> void:
 		print("timeout outside of level")
 		return
 	
+	panic_timer.stop()
+	clock_tick.stop()
+	
 	print("timer timeout")
-	await transition_level()
+	await transition_level(false, true)
 		
-	level_finished.emit(level["time_taken"], level["concentration"], true)
+	level_finished.emit(level["time_taken"], level["concentration"], true, 0)
 
-func transition_level():
+func transition_level(won_level: bool, timeout: bool):
 	print("index %s" % game_index)
 	
 	if current_game:
@@ -169,11 +191,14 @@ func transition_level():
 	timer.set_paused(true)
 	Globals.hud_timer_paused.emit(true)
 	
-	if game_index < len(level["minigames"]):
+	if game_index < len(level["minigames"]) and not timeout:
 		var minigame = minigames[level["minigames"][game_index]]
 		screen_transition.play_transition(minigame["input_instr"], minigame["game_instr"])
 	else:
-		screen_transition.play_transition("instr_mouse_click", "Task Complete!")
+		if won_level:
+			screen_transition.play_transition("instr_nice", "Task Complete!")
+		else:
+			screen_transition.play_transition("instr_loser", "Times up!")
 	
 	print("play transition")
 	
@@ -194,3 +219,10 @@ func transition_level():
 	if current_game:
 			current_game.queue_free()
 			current_game = null
+
+
+func _on_panic_timer_timeout() -> void:
+	if not current_game:
+		return
+	
+	clock_tick.play()

@@ -19,12 +19,6 @@ extends Node2D
 		"placed_item": $PlacedItem3,
 		"clean": false
 	},
-	{
-		"trigger": $Trigger4,
-		"grab_item": $Item4,
-		"placed_item": $PlacedItem4,
-		"clean": false
-	}
 ]
 
 var holding_item = false
@@ -49,7 +43,7 @@ func _process(_delta: float) -> void:
 		item.position = get_viewport().get_mouse_position()
 
 func trigger_entered(item_info: Dictionary, area: Area2D):
-	var held_item: Sprite2D = area.get_parent()
+	var held_item: Node2D = area.get_parent()
 	
 	if held_item == item_info["grab_item"]:
 		item_info["clean"] = true
