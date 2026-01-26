@@ -3,6 +3,7 @@ extends Node2D
 const RACK_PADDING: float = 30.0
 
 @export var cursor: Texture
+@export var pointing: Texture
 
 @onready var water = $water
 
@@ -29,7 +30,7 @@ func _process(_delta: float) -> void:
 		grabbed_item.position = get_viewport().get_mouse_position()
 
 func item_clicked(item: Sprite2D, event: InputEvent):
-	if event is InputEventMouseButton and not grabbed and not item.is_in_group("washed_dish"):
+	if event is InputEventMouseButton and not grabbed and not item.is_in_group("washed_dishes"):
 		grabbed_item = item
 		grabbed = true
 

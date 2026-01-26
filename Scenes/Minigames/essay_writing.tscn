@@ -16,7 +16,7 @@ outline_color = Color(0, 0, 0, 1)
 
 [node name="EssayWriting" type="CanvasLayer"]
 script = ExtResource("1_wj40v")
-chars_per_key = 2
+chars_per_key = 3
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3

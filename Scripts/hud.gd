@@ -40,7 +40,7 @@ func set_world_time(new: int):
 	
 	print("world time index: 4 - (%s / 4.0) = %s" % [world_time, 4 - roundi(float(world_time) / 20.0)])
 	
-	windows.set_index(4 - roundi(float(world_time) / 20.0))
+	windows.set_index(clamp((5 - roundi(float(world_time) / 20.0)), 0, 4))
 
 func start_timer(time: float):
 	timer = time

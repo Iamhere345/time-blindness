@@ -1,6 +1,6 @@
 [gd_scene load_steps=45 format=3 uid="uid://dqsgp7ogyn7tj"]
 
-[ext_resource type="Texture2D" uid="uid://k0kn4j75qwm1" path="res://Assets/Images/Intro/intro-backround.png" id="1_alxvg"]
+[ext_resource type="Texture2D" uid="uid://df0c3j5qfei0f" path="res://Assets/Images/Intro/intro-backround.png" id="1_alxvg"]
 [ext_resource type="Script" uid="uid://ckhudnt2m6msu" path="res://Scripts/intro.gd" id="1_nn7w8"]
 [ext_resource type="Texture2D" uid="uid://dbhi80xee152j" path="res://Assets/Images/Intro/intro-controlerr-330.png" id="2_geirw"]
 [ext_resource type="Texture2D" uid="uid://dniunjlcmrn2t" path="res://Assets/Images/Intro/intro-text.png" id="3_hwjxs"]
@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://nr7ntkgbwp75" path="res://Assets/Images/Intro/intro-speech-bubble-reply.png" id="5_b26wi"]
 [ext_resource type="Texture2D" uid="uid://djgxihnjn8xuf" path="res://Assets/Images/Intro/intro-thought-bubble.png" id="6_nn7w8"]
 [ext_resource type="Texture2D" uid="uid://cc0risspoi1v4" path="res://Assets/Images/Intro/intro-tv.png" id="8_ewknp"]
-[ext_resource type="Texture2D" uid="uid://c3lvukl2htb3h" path="res://Assets/Images/Intro/calender-place-holder.png" id="10_ewknp"]
+[ext_resource type="Texture2D" uid="uid://plcqh103dd52" path="res://Assets/Images/Intro/Calender_Finished.png" id="9_ewknp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g8dlr"]
 atlas = ExtResource("2_geirw")
@@ -288,7 +288,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 10.0
 }]
 
 [sub_resource type="Animation" id="Animation_b26wi"]
@@ -368,7 +368,7 @@ tracks/5/keys = {
 
 [sub_resource type="Animation" id="Animation_nn7w8"]
 resource_name = "intro"
-length = 20.0
+length = 24.0
 step = 0.5
 tracks/0/type = "method"
 tracks/0/imported = false
@@ -658,12 +658,12 @@ sprite_frames = SubResource("SpriteFrames_g8dlr")
 centered = false
 
 [node name="ChoresSpeech" type="AnimatedSprite2D" parent="."]
-position = Vector2(179, 180)
+position = Vector2(174, 225)
 sprite_frames = SubResource("SpriteFrames_yny27")
 animation = &"speech"
 
 [node name="ChoresReply" type="AnimatedSprite2D" parent="."]
-position = Vector2(145, 259)
+position = Vector2(143, 266)
 sprite_frames = SubResource("SpriteFrames_sb6eq")
 animation = &"reply"
 
@@ -672,21 +672,24 @@ position = Vector2(568, 111)
 sprite_frames = SubResource("SpriteFrames_uqcso")
 
 [node name="TV" type="AnimatedSprite2D" parent="."]
-position = Vector2(321, 182)
+position = Vector2(334, 204.99998)
+rotation = -0.07868355
 sprite_frames = SubResource("SpriteFrames_3pufg")
-frame_progress = 0.44507807
+autoplay = "default"
+frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_ewknp")
 }
 autoplay = "intro"
+speed_scale = 0.9
 
 [node name="CalenderPlaceHolder" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(313, 180.99997)
 scale = Vector2(0.65000004, 0.65000004)
-texture = ExtResource("10_ewknp")
+texture = ExtResource("9_ewknp")
 
 [node name="OutOfTime" type="AnimatedSprite2D" parent="."]
 position = Vector2(320, 180)

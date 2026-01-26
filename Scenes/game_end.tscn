@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://c64fx3d6bt1y6"]
+[gd_scene load_steps=12 format=3 uid="uid://c64fx3d6bt1y6"]
 
 [ext_resource type="Script" uid="uid://c80ji0mnrfmcq" path="res://Scripts/game_end.gd" id="1_cmq3e"]
 [ext_resource type="FontFile" uid="uid://cbpu6v21sqcde" path="res://Assets/Resources/Sigmabet-Regular.ttf" id="1_wl1fq"]
+[ext_resource type="StyleBox" uid="uid://ifd57o15xwey" path="res://Assets/Resources/game_end.tres" id="3_jasv6"]
 
 [sub_resource type="Theme" id="Theme_n3sjg"]
 Panel/styles/panel = null
@@ -91,10 +92,22 @@ tracks/4/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0)]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("PlayAgain:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_wl1fq"]
 resource_name = "fade_in"
-length = 5.0
+length = 7.0
 step = 1.0
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -156,6 +169,18 @@ tracks/4/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("PlayAgain:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(5, 6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jasv6"]
 _data = {
@@ -164,6 +189,7 @@ _data = {
 }
 
 [node name="GameEnd" type="CanvasLayer"]
+layer = 10
 script = ExtResource("1_cmq3e")
 
 [node name="Control" type="Control" parent="."]
@@ -247,9 +273,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -194.0
-offset_top = -63.0
+offset_top = -100.0
 offset_right = 194.0
-offset_bottom = -30.0
+offset_bottom = -67.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "Thanks for playing!"
@@ -259,3 +285,28 @@ label_settings = SubResource("LabelSettings_wl1fq")
 libraries = {
 &"": SubResource("AnimationLibrary_jasv6")
 }
+
+[node name="PlayAgain" type="Button" parent="Control"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -50.5
+offset_top = -37.0
+offset_right = 50.5
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_hover_color = Color(0.1764706, 0.2627451, 1, 1)
+theme_override_fonts/font = ExtResource("1_wl1fq")
+theme_override_styles/normal = ExtResource("3_jasv6")
+theme_override_styles/pressed = ExtResource("3_jasv6")
+theme_override_styles/hover = ExtResource("3_jasv6")
+theme_override_styles/disabled = ExtResource("3_jasv6")
+theme_override_styles/focus = ExtResource("3_jasv6")
+text = "Play Again"
+
+[connection signal="pressed" from="Control/PlayAgain" to="." method="_on_play_again_pressed"]

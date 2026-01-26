@@ -11,9 +11,12 @@ config_version=5
 [application]
 
 config/name="Time Blindness"
+config/version="0.1.0"
 run/main_scene="uid://wnwnpdw3mmgl"
 config/features=PackedStringArray("4.5", "Mobile")
-config/icon="res://icon.svg"
+config/icon="uid://c5ktujoxrn"
+config/macos_native_icon="res://Assets/Resources/game-icon.icns"
+config/windows_native_icon="res://Assets/Resources/game-icon.ico"
 
 [autoload]
 
@@ -23,7 +26,9 @@ Globals="*res://Scripts/globals.gd"
 
 window/size/viewport_width=640
 window/size/viewport_height=360
+window/size/mode=3
 window/stretch/mode="viewport"
+window/stretch/aspect="expand"
 window/stretch/scale_mode="integer"
 
 [editor_plugins]

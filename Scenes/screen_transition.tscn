@@ -111,6 +111,7 @@ font = ExtResource("3_v3w16")
 font_size = 24
 
 [node name="ScreenTransition" type="CanvasLayer"]
+layer = 4
 script = ExtResource("1_cmets")
 
 [node name="Control" type="Control" parent="."]

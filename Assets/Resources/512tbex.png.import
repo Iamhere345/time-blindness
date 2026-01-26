@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c3lvukl2htb3h"
-path="res://.godot/imported/calender-place-holder.png-8a480b15aa12cae88326c0434ff80ea6.ctex"
+uid="uid://ctkh4mdy1csqb"
+path="res://.godot/imported/512tbex.png-49ff11dd59a331b04d07f923b1971ed0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Images/Intro/calender-place-holder.png"
-dest_files=["res://.godot/imported/calender-place-holder.png-8a480b15aa12cae88326c0434ff80ea6.ctex"]
+source_file="res://Assets/Resources/512tbex.png"
+dest_files=["res://.godot/imported/512tbex.png-49ff11dd59a331b04d07f923b1971ed0.ctex"]
 
 [params]
 

@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bhux1yr4482le" path="res://Scripts/distraction_manager.gd" id="1_by1ik"]
 
 [node name="DistractionManager" type="CanvasLayer"]
-layer = 2
+layer = 3
 script = ExtResource("1_by1ik")
 
 [node name="Control" type="Control" parent="."]

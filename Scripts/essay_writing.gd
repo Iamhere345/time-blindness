@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-@export var chars_per_key: int = 4
+@export var chars_per_key: int
 
 @onready var essay: Label = $Control/Essay
 

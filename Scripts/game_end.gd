@@ -50,3 +50,7 @@ func end_game(player_won: bool, levels_completed: int, concentration: int, avg_t
 	print("average time left: %s" % avg_time_left)
 	
 	anim_player.play("fade_in")
+
+
+func _on_play_again_pressed() -> void:
+	get_tree().reload_current_scene()

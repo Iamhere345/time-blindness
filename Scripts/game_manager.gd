@@ -15,8 +15,8 @@ var current_game: Node
 const levels = {
 	"homework": {
 		"time_limit": 15.0,
-		"time_taken": 25.0,
-		"concentration": -40,
+		"time_taken": 60.0,
+		"concentration": -25,
 		"minigames": [
 			"maths",
 			"book",
@@ -25,9 +25,9 @@ const levels = {
 		]
 	},
 	"work": {
-		"time_limit": 15.0,
-		"time_taken": 35.0,
-		"concentration": -40,
+		"time_limit": 20.0,
+		"time_taken": 60.0,
+		"concentration": -25,
 		"minigames": [
 			"myki",
 			"stock_shelves",
@@ -37,9 +37,9 @@ const levels = {
 		]
 	},
 	"chores": {
-		"time_limit": 10.0,
-		"time_taken": 25.0,
-		"concentration": -40,
+		"time_limit": 15.0,
+		"time_taken": 30.0,
+		"concentration": -25,
 		"minigames": [
 			"clean_room",
 			"trash",
@@ -48,7 +48,7 @@ const levels = {
 	},
 	"birdwatching": {
 		"time_limit": 5.0,
-		"time_taken": 15.0,
+		"time_taken": 25.0,
 		"concentration": 20,
 		"minigames": [
 			"birdwatching"
@@ -56,7 +56,7 @@ const levels = {
 	},
 	"basketball": {
 		"time_limit": 3.0,
-		"time_taken": 10.0,
+		"time_taken": 20.0,
 		"concentration": 20,
 		"minigames": [
 			"basketball"
@@ -64,7 +64,7 @@ const levels = {
 	},
 	"platformer": {
 		"time_limit": 5.0,
-		"time_taken": 15.0,
+		"time_taken": 20.0,
 		"concentration": 20,
 		"minigames": [
 			"platformer"
@@ -72,7 +72,7 @@ const levels = {
 	},
 	"skateboard": {
 		"time_limit": 5.0,
-		"time_taken": 15.0,
+		"time_taken": 20.0,
 		"concentration": 20,
 		"minigames": [
 			"skateboard"
@@ -163,6 +163,7 @@ func next_minigame():
 	print("start next minigame")
 	
 	Input.set_custom_mouse_cursor(null)
+	Input.set_custom_mouse_cursor(null, Input.CURSOR_POINTING_HAND)
 	
 	if game_index != len(level["minigames"]):
 		await transition_level(false, false)
@@ -178,18 +179,21 @@ func next_minigame():
 		await transition_level(true, false)
 		
 		# level has finished; calculate time taken and fire signal
-		#var time_taken = ((level["time_limit"] - timer.time_left) / level["time_limit"]) * level["time_taken"]
+		var time_taken = ((level["time_limit"] - timer.time_left) / level["time_limit"]) * level["time_taken"]
 
 		var time_left = 1.0 - ((level["time_limit"] - timer.time_left) / level["time_limit"])
 
+		print("time taken: %s actual time: %s / %s max: %s" % [time_taken, timer.time_left, level["time_limit"], level["time_taken"]])
+		
 		timer.stop()
 		panic_timer.stop()
 		clock_tick.stop()
 		
 		
-		print("timer time left: %s" % time_left)
+		#print("timer time left: %s" % time_left)
 		
-		level_finished.emit(level["time_taken"], level["concentration"], false, time_left)
+		
+		level_finished.emit(time_taken, level["concentration"], false, time_left)
 
 
 func _on_minigame_timer_timeout() -> void:

@@ -9,6 +9,9 @@ extends Node2D
 @export var world_time: int = 100
 @export var concentration: int = 100
 
+@onready var soundtrack_1: AudioStreamPlayer2D = $Soundtrack
+@onready var soundtrack_2: AudioStreamPlayer2D = $Soundtrack2
+
 var avg_level_time: float = 0
 var levels_attempted: float = 0
 
@@ -29,6 +32,7 @@ var levels_completed: int = 0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	hud.set_concentration(concentration)
+	hud.set_world_time(world_time)
 
 func _on_level_select_level_selected(level_name: String) -> void:
 	print("level " + level_name + " selected")
@@ -53,6 +57,11 @@ func _on_game_manager_level_finished(time_taken: float, concentration_taken: int
 	
 	world_time -= clamp(int(time_taken), 0, 100)
 	concentration = clamp(concentration + concentration_taken, 0, 100)
+	
+	#set_music_timescale(clamp(1.0 + (1.0 - (float(world_time) / 100.0)), 1.0, 2.0))
+	
+	if world_time <= 50.0:
+		intensify_music()
 	
 	levels_attempted += 1
 	avg_level_time += time_left
@@ -83,3 +92,16 @@ func _on_game_manager_level_finished(time_taken: float, concentration_taken: int
 		
 	if world_time == 0:
 		game_end.end_game(false, levels_completed, concentration, avg_level_time / levels_attempted)
+
+
+func _on_intro_intro_finished() -> void:
+	$IntroLayer.visible = false
+
+func intensify_music():
+	var old_song = create_tween()
+	old_song.tween_property(soundtrack_1, "volume_db", -80.0, 2.0)
+	old_song.tween_callback(func(): soundtrack_1.stop())
+	
+	soundtrack_2.play(soundtrack_1.get_playback_position())
+	var new_song = create_tween()
+	new_song.tween_property(soundtrack_2, "volume_db", 0.0, 2.0)

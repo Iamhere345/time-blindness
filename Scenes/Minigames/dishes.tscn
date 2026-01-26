@@ -88,7 +88,7 @@ shape = SubResource("RectangleShape2D_qoags")
 [node name="water" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_v3k7q")
 
-[connection signal="area_entered" from="Sink" to="." method="_on_scanner_area_entered"]
 [connection signal="area_entered" from="Sink" to="." method="_on_sink_area_entered"]
+[connection signal="area_entered" from="Sink" to="." method="_on_scanner_area_entered"]
 [connection signal="body_entered" from="Sink" to="." method="_on_scanner_body_entered"]
 [connection signal="area_entered" from="DishRack" to="." method="_on_dish_rack_area_entered"]
