@@ -18,8 +18,8 @@ func _ready() -> void:
 	
 	Globals.minigame_finished.connect(func(): level_finished = true)
 	
-	#Input.set_custom_mouse_cursor(cursor_normal)
-	#Input.set_custom_mouse_cursor(cursor_hover, Input.CURSOR_POINTING_HAND)
+	Input.set_custom_mouse_cursor(cursor_normal)
+	Input.set_custom_mouse_cursor(cursor_hover, Input.CURSOR_POINTING_HAND)
 
 func mouse_entered():
 	Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)

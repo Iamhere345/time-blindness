@@ -62,12 +62,20 @@ const levels = {
 			"basketball"
 		]
 	},
-		"platformer": {
+	"platformer": {
 		"time_limit": 5.0,
 		"time_taken": 15.0,
 		"concentration": 20,
 		"minigames": [
 			"platformer"
+		]
+	},
+	"skateboard": {
+		"time_limit": 5.0,
+		"time_taken": 15.0,
+		"concentration": 20,
+		"minigames": [
+			"skateboard"
 		]
 	},
 }
@@ -128,6 +136,10 @@ const minigames: Dictionary = {
 	"platformer": {
 		"input_instr": "instr_ad_space",
 		"game_instr": "Reach the flag!!",
+	},
+	"skateboard": {
+		"input_instr": "instr_mouse_move",
+		"game_instr": "Stickerbomb the skateboard!"
 	}
 }
 
@@ -149,6 +161,8 @@ func start_level(level_name: String) -> Array:
 
 func next_minigame():
 	print("start next minigame")
+	
+	Input.set_custom_mouse_cursor(null)
 	
 	if game_index != len(level["minigames"]):
 		await transition_level(false, false)

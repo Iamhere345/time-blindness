@@ -1,0 +1,76 @@
+[gd_scene load_steps=12 format=3 uid="uid://dhys2pi70v7p7"]
+
+[ext_resource type="Script" uid="uid://copnm4y3v48lb" path="res://Scripts/skateboard.gd" id="1_px7y0"]
+[ext_resource type="Texture2D" uid="uid://d3f3q0rsokacn" path="res://Assets/Images/Skateboard/Skateboard_Finished.png" id="2_px7y0"]
+[ext_resource type="Texture2D" uid="uid://bj3xycgyr5odj" path="res://Assets/Images/Skateboard/sticker-gizzard.png" id="3_tigxa"]
+[ext_resource type="Script" uid="uid://djbhcwsg57d5d" path="res://Scripts/clickable_sprite.gd" id="4_p5v2e"]
+[ext_resource type="Texture2D" uid="uid://b4shwaxr0simt" path="res://Assets/Images/Skateboard/sticker-lizard.png" id="5_ayfro"]
+[ext_resource type="Texture2D" uid="uid://bv5qtvnys7bst" path="res://Assets/Images/Skateboard/sticker-wizard.png" id="6_p5v2e"]
+[ext_resource type="AudioStream" uid="uid://b3pqe8e0m5xwi" path="res://Assets/Audio/sticker-place.mp3" id="10_tigxa"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i4tu7"]
+size = Vector2(56, 55)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xb4lf"]
+size = Vector2(52, 52)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_exh0v"]
+size = Vector2(53.92032, 55.185356)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_i18c1"]
+radius = 86.0
+height = 616.0
+
+[node name="Skateboard" type="Node2D"]
+script = ExtResource("1_px7y0")
+
+[node name="RoomBackground" type="Sprite2D" parent="."]
+texture = ExtResource("2_px7y0")
+centered = false
+
+[node name="Item1" type="Sprite2D" parent="." groups=["till_items"]]
+position = Vector2(163, 236)
+texture = ExtResource("3_tigxa")
+script = ExtResource("4_p5v2e")
+
+[node name="Area2D" type="Area2D" parent="Item1"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Item1/Area2D"]
+position = Vector2(-1, -0.5)
+shape = SubResource("RectangleShape2D_i4tu7")
+
+[node name="Item2" type="Sprite2D" parent="." groups=["till_items"]]
+position = Vector2(339, 241)
+texture = ExtResource("5_ayfro")
+
+[node name="Area2D" type="Area2D" parent="Item2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Item2/Area2D"]
+position = Vector2(1, 2)
+shape = SubResource("RectangleShape2D_xb4lf")
+
+[node name="Item3" type="Sprite2D" parent="." groups=["till_items"]]
+position = Vector2(455, 240.00003)
+rotation = -0.40032256
+scale = Vector2(0.6161963, 0.6161963)
+texture = ExtResource("6_p5v2e")
+
+[node name="Area2D" type="Area2D" parent="Item3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Item3/Area2D"]
+position = Vector2(0.5177002, 0.7471924)
+shape = SubResource("RectangleShape2D_exh0v")
+
+[node name="Trigger1" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Trigger1"]
+position = Vector2(320, 101)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_i18c1")
+
+[node name="StickerPlace" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_tigxa")
+
+[connection signal="area_entered" from="Trigger1" to="." method="_on_scanner_area_entered"]
+[connection signal="body_entered" from="Trigger1" to="." method="_on_scanner_body_entered"]
+[connection signal="input_event" from="Trigger1" to="." method="_on_trigger_1_input_event"]

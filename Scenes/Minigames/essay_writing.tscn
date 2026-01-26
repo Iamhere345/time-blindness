@@ -1,8 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://c6iglrw7vihjs"]
+[gd_scene load_steps=8 format=3 uid="uid://c6iglrw7vihjs"]
 
 [ext_resource type="Script" uid="uid://c7ysa51534bbb" path="res://Scripts/essay_writing.gd" id="1_wj40v"]
 [ext_resource type="Texture2D" uid="uid://dlp2rb8gkpxjs" path="res://Assets/Images/Essay/essay-bg.png" id="2_ki6pc"]
 [ext_resource type="FontFile" uid="uid://cbpu6v21sqcde" path="res://Assets/Resources/Sigmabet-Regular.ttf" id="3_uovt4"]
+[ext_resource type="AudioStream" uid="uid://wwuengwcssw1" path="res://Assets/Audio/pencil1.mp3" id="4_dvba7"]
+[ext_resource type="AudioStream" uid="uid://cy283gurq8ii8" path="res://Assets/Audio/pencil2.mp3" id="5_4wjoq"]
+[ext_resource type="AudioStream" uid="uid://c7qhubx2y2nhc" path="res://Assets/Audio/pencil3.mp3" id="6_qao1r"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ki6pc"]
 line_spacing = 7.0
@@ -38,3 +41,12 @@ offset_right = 404.0
 offset_bottom = 294.0
 label_settings = SubResource("LabelSettings_ki6pc")
 autowrap_mode = 2
+
+[node name="Pencil1" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_dvba7")
+
+[node name="Pencil2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_4wjoq")
+
+[node name="Pencil3" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_qao1r")

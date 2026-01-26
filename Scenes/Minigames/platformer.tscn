@@ -67,14 +67,14 @@ frame_progress = 0.40680405
 position = Vector2(177, -44)
 stream = ExtResource("5_kqm6o")
 
-[node name="flag" type="Area2D" parent="."]
+[node name="Flag" type="Area2D" parent="."]
 position = Vector2(222, 34)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="flag"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Flag"]
 position = Vector2(-2, -6)
 shape = SubResource("RectangleShape2D_kqm6o")
 
-[node name="hurray" type="AudioStreamPlayer2D" parent="."]
+[node name="Hurray" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_gb4pn")
 
-[connection signal="body_shape_entered" from="flag" to="." method="_on_flag_body_shape_entered"]
+[connection signal="body_shape_entered" from="Flag" to="." method="_on_flag_body_shape_entered"]

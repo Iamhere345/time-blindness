@@ -5,6 +5,8 @@ extends CanvasLayer
 @onready var input_instructions =  $Control/Background/InputInstructions
 @onready var game_instructions = $Control/Background/GameInstructions
 
+@onready var wipe_audio := $Wipe
+
 signal transition_complete
 signal screen_covered
 
@@ -17,6 +19,8 @@ func play_transition(input_instr: String, game_instr: String):
 	background.position = Vector2(-995.0, 0.0)
 	anim_player.play("RESET")
 	anim_player.play("screen_wipe")
+	
+	wipe_audio.play()
 	
 	anim_player.animation_finished.connect(func(_anim_name): transition_complete.emit())
 
