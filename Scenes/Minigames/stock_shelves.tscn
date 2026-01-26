@@ -1,9 +1,10 @@
-[gd_scene load_steps=18 format=3 uid="uid://mtvtjdbak8du"]
+[gd_scene load_steps=19 format=3 uid="uid://mtvtjdbak8du"]
 
 [ext_resource type="Texture2D" uid="uid://pxbyfh1dy5ci" path="res://Assets/Images/StockShelves/shelves-bg.png" id="1_j8ory"]
 [ext_resource type="Script" uid="uid://rgtsvsbo73ta" path="res://Scripts/stock_shelves.gd" id="1_orc8u"]
 [ext_resource type="Texture2D" uid="uid://dshkgymr6tibw" path="res://Assets/Images/StockShelves/boxes-spritesheet.png" id="2_6psyw"]
 [ext_resource type="Texture2D" uid="uid://c32u8u15t36sk" path="res://Assets/Images/StockShelves/fruits-spritesheet.png" id="3_orc8u"]
+[ext_resource type="AudioStream" uid="uid://6wlmlppn3gvo" path="res://Assets/Audio/fruit place.mp3" id="5_6c1ld"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6c1ld"]
 atlas = ExtResource("2_6psyw")
@@ -167,6 +168,9 @@ shape = SubResource("RectangleShape2D_6c1ld")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PineappleTrigger"]
 position = Vector2(238.5625, 226)
 shape = SubResource("RectangleShape2D_j2st8")
+
+[node name="place" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_6c1ld")
 
 [connection signal="input_event" from="BoxTrigger" to="." method="_on_box_trigger_input_event"]
 [connection signal="input_event" from="PumpkinTrigger" to="." method="_on_pumpkin_trigger_input_event"]

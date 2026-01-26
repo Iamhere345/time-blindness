@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cabap71gqpvgn"
+path="res://.godot/imported/crowd cheering-shortened.mp3-41757a653e9e42dc87d733de7cf6e2c2.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/crowd cheering-shortened.mp3"
+dest_files=["res://.godot/imported/crowd cheering-shortened.mp3-41757a653e9e42dc87d733de7cf6e2c2.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

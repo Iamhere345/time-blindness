@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dv1ipw221r1wg"]
+[gd_scene load_steps=17 format=3 uid="uid://dv1ipw221r1wg"]
 
 [ext_resource type="Texture2D" uid="uid://wkue411sb0du" path="res://Assets/Images/Basketball/bball-backround.png" id="1_hgfhb"]
 [ext_resource type="Script" uid="uid://du53kh1ep67lw" path="res://Scripts/basketball.gd" id="1_xydoo"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://d0gn7s4cgyew0" path="res://Assets/Images/Basketball/bbal_hoop.png" id="4_sk7mn"]
 [ext_resource type="Texture2D" uid="uid://durbma27erymc" path="res://Assets/Images/Basketball/bball-big-ball.png" id="5_2kw60"]
 [ext_resource type="Texture2D" uid="uid://80qvdfpuikgu" path="res://Assets/Images/Basketball/bball-small-ball.png" id="6_jpswa"]
+[ext_resource type="AudioStream" uid="uid://cabap71gqpvgn" path="res://Assets/Audio/crowd cheering-shortened.mp3" id="7_sk7mn"]
+[ext_resource type="AudioStream" uid="uid://c1anyasubndp3" path="res://Assets/Audio/Crowd disappointed-shortened.mp3" id="8_2kw60"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d6a67"]
 atlas = ExtResource("3_jpswa")
@@ -100,6 +102,12 @@ texture = ExtResource("6_jpswa")
 position = Vector2(320, 416)
 scale = Vector2(4.6585364, 3)
 shape = SubResource("WorldBoundaryShape2D_jpswa")
+
+[node name="cheer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_sk7mn")
+
+[node name="boo" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_2kw60")
 
 [connection signal="body_entered" from="GoalTrigger" to="." method="_on_goal_trigger_body_entered"]
 [connection signal="body_entered" from="FailTrigger" to="." method="_on_fail_trigger_body_entered"]

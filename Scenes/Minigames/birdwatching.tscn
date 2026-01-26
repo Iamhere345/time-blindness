@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://0caahpmmyc8x"]
+[gd_scene load_steps=7 format=3 uid="uid://0caahpmmyc8x"]
 
 [ext_resource type="Script" uid="uid://cy6e4djl8raea" path="res://Scripts/birdwatching.gd" id="1_ailkd"]
 [ext_resource type="Texture2D" uid="uid://bp4jvajby3dls" path="res://Assets/Images/Birdwatching/birdwatching-bg.png" id="2_ailkd"]
 [ext_resource type="SpriteFrames" uid="uid://ce3f46jrwqcho" path="res://Assets/Resources/Minigames/Birdwatching/brid-anim.tres" id="3_ailkd"]
 [ext_resource type="Texture2D" uid="uid://14n68eq72hpd" path="res://Assets/Images/Birdwatching/telescope.png" id="4_xfvh0"]
+[ext_resource type="AudioStream" uid="uid://br5rfa2nvs5pt" path="res://Assets/Audio/Wing Flap.mp3" id="5_ridh5"]
+[ext_resource type="AudioStream" uid="uid://cmtvw87kjw4gq" path="res://Assets/Audio/one eros yell.wav" id="6_nejgj"]
 
 [node name="Birdwatching" type="Node2D"]
 script = ExtResource("1_ailkd")
@@ -29,3 +31,9 @@ animation = &"idle"
 
 [node name="Telescope" type="Sprite2D" parent="."]
 texture = ExtResource("4_xfvh0")
+
+[node name="flapping" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_ridh5")
+
+[node name="chirp" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_nejgj")

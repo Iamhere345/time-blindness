@@ -16,7 +16,7 @@ const levels = {
 	"homework": {
 		"time_limit": 15.0,
 		"time_taken": 25.0,
-		"concentration": -25,
+		"concentration": -40,
 		"minigames": [
 			"maths",
 			"book",
@@ -27,7 +27,7 @@ const levels = {
 	"work": {
 		"time_limit": 15.0,
 		"time_taken": 35.0,
-		"concentration": -25,
+		"concentration": -40,
 		"minigames": [
 			"myki",
 			"stock_shelves",
@@ -39,7 +39,7 @@ const levels = {
 	"chores": {
 		"time_limit": 10.0,
 		"time_taken": 25.0,
-		"concentration": -25,
+		"concentration": -40,
 		"minigames": [
 			"clean_room",
 			"trash",
@@ -49,7 +49,7 @@ const levels = {
 	"birdwatching": {
 		"time_limit": 5.0,
 		"time_taken": 15.0,
-		"concentration": 30,
+		"concentration": 20,
 		"minigames": [
 			"birdwatching"
 		]
@@ -57,9 +57,17 @@ const levels = {
 	"basketball": {
 		"time_limit": 3.0,
 		"time_taken": 10.0,
-		"concentration": 40,
+		"concentration": 20,
 		"minigames": [
 			"basketball"
+		]
+	},
+		"platformer": {
+		"time_limit": 5.0,
+		"time_taken": 15.0,
+		"concentration": 20,
+		"minigames": [
+			"platformer"
 		]
 	},
 }
@@ -116,6 +124,10 @@ const minigames: Dictionary = {
 	"book": {
 		"input_instr": "instr_d",
 		"game_instr": "Read the book!",
+	},
+	"platformer": {
+		"input_instr": "instr_ad_space",
+		"game_instr": "Reach the flag!!",
 	}
 }
 

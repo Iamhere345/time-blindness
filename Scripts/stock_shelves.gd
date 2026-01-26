@@ -1,5 +1,7 @@
 extends Node2D
 
+@onready var place = $place
+
 @onready var box_trigger = $BoxTrigger
 @onready var pumpkin_trigger = $PumpkinTrigger
 @onready var apple_trigger = $AppleTrigger
@@ -48,15 +50,18 @@ func _on_pumpkin_trigger_input_event(_viewport: Node, event: InputEvent, _shape_
 	if event is InputEventMouseButton and holding_fruit and fruits[box_index] == "pumpkin":
 		pumpkin.visible = true
 		holding_fruit = false
+		place.play()
 
 
 func _on_apple_trigger_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if event is InputEventMouseButton and holding_fruit and fruits[box_index] == "apple":
 		apple.visible = true
 		holding_fruit = false
+		place.play()
 
 
 func _on_pineapple_trigger_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if event is InputEventMouseButton and holding_fruit and fruits[box_index] == "pineapple":
 		pineapple.visible = true
 		holding_fruit = false
+		place.play()

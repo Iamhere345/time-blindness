@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bm4snjftsp72"]
+[gd_scene load_steps=20 format=3 uid="uid://bm4snjftsp72"]
 
 [ext_resource type="Script" uid="uid://du53kh1ep67lw" path="res://Scripts/basketball.gd" id="1_5enrt"]
 [ext_resource type="Texture2D" uid="uid://c1gxj2wnoub7n" path="res://Assets/Images/Trash/trash_backround.png" id="2_5enrt"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cf03eqpewache" path="res://Assets/Images/Trash/trash_large.png" id="4_8lpny"]
 [ext_resource type="Texture2D" uid="uid://cl0wbt33t5s26" path="res://Assets/Images/Trash/bin.png" id="5_5enrt"]
 [ext_resource type="Texture2D" uid="uid://mcsvhba1rib7" path="res://Assets/Images/Trash/trash_small.png" id="6_uwi7b"]
+[ext_resource type="AudioStream" uid="uid://clb8v33137l04" path="res://Assets/Audio/trash-landing.mp3" id="9_uwi7b"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t2ybr"]
 atlas = ExtResource("3_uwi7b")
@@ -132,6 +133,13 @@ texture = ExtResource("6_uwi7b")
 position = Vector2(320, 416)
 scale = Vector2(4.6585364, 3)
 shape = SubResource("WorldBoundaryShape2D_jpswa")
+
+[node name="cheer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_uwi7b")
+
+[node name="boo" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_uwi7b")
+volume_db = 1.23
 
 [connection signal="body_entered" from="GoalTrigger" to="." method="_on_goal_trigger_body_entered"]
 [connection signal="body_entered" from="FailTrigger" to="." method="_on_fail_trigger_body_entered"]
