@@ -14,7 +14,7 @@ config/name="Time Blindness"
 config/version="0.1.0"
 run/main_scene="uid://wnwnpdw3mmgl"
 config/features=PackedStringArray("4.5", "Mobile")
-config/icon="uid://c5ktujoxrn"
+config/icon="uid://ctkh4mdy1csqb"
 config/macos_native_icon="res://Assets/Resources/game-icon.icns"
 config/windows_native_icon="res://Assets/Resources/game-icon.ico"
 

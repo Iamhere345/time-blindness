@@ -17,10 +17,13 @@ func _ready() -> void:
 	essay_text = load_essay()
 
 func load_essay() -> String:
-	var path = "res://Assets/Resources/essay.txt"
-	var file = FileAccess.open(path, FileAccess.READ)
+	return """
+	"In my younger and more vulnerable years my father gave me some advice that I've been turning over in my mind ever since. "Whenever you feel like criticizing any one," he told me, "just remember that all the people in this world haven't had the advantages that you've had." He didn't"
+	"""
+	#var path = "res://Assets/Resources/essay.txt"
+	#var file = FileAccess.open(path, FileAccess.READ)
 	
-	return file.get_as_text()
+	#return file.get_as_text()
 
 func _unhandled_key_input(event: InputEvent) -> void:
 	if event.is_pressed():

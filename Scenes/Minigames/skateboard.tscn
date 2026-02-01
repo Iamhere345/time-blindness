@@ -40,7 +40,7 @@ position = Vector2(-1, -0.5)
 shape = SubResource("RectangleShape2D_i4tu7")
 
 [node name="Item2" type="Sprite2D" parent="." groups=["till_items"]]
-position = Vector2(339, 241)
+position = Vector2(305, 227)
 texture = ExtResource("5_ayfro")
 
 [node name="Area2D" type="Area2D" parent="Item2"]
@@ -50,7 +50,7 @@ position = Vector2(1, 2)
 shape = SubResource("RectangleShape2D_xb4lf")
 
 [node name="Item3" type="Sprite2D" parent="." groups=["till_items"]]
-position = Vector2(455, 240.00003)
+position = Vector2(231, 223.00003)
 rotation = -0.40032256
 scale = Vector2(0.6161963, 0.6161963)
 texture = ExtResource("6_p5v2e")

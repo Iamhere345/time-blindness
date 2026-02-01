@@ -104,4 +104,4 @@ func intensify_music():
 	
 	soundtrack_2.play(soundtrack_1.get_playback_position())
 	var new_song = create_tween()
-	new_song.tween_property(soundtrack_2, "volume_db", 0.0, 2.0)
+	new_song.tween_property(soundtrack_2, "volume_db", -10.0, 2.0)
