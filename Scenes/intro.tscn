@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://dqsgp7ogyn7tj"]
+[gd_scene load_steps=47 format=3 uid="uid://dqsgp7ogyn7tj"]
 
 [ext_resource type="Texture2D" uid="uid://df0c3j5qfei0f" path="res://Assets/Images/Intro/intro-backround.png" id="1_alxvg"]
 [ext_resource type="Script" uid="uid://ckhudnt2m6msu" path="res://Scripts/intro.gd" id="1_nn7w8"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://djgxihnjn8xuf" path="res://Assets/Images/Intro/intro-thought-bubble.png" id="6_nn7w8"]
 [ext_resource type="Texture2D" uid="uid://cc0risspoi1v4" path="res://Assets/Images/Intro/intro-tv.png" id="8_ewknp"]
 [ext_resource type="Texture2D" uid="uid://plcqh103dd52" path="res://Assets/Images/Intro/Calender_Finished.png" id="9_ewknp"]
+[ext_resource type="FontFile" uid="uid://cbpu6v21sqcde" path="res://Assets/Resources/Sigmabet-Regular.ttf" id="11_a7jvs"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g8dlr"]
 atlas = ExtResource("2_geirw")
@@ -365,6 +366,18 @@ tracks/5/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Control/Skip:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_nn7w8"]
 resource_name = "intro"
@@ -540,6 +553,18 @@ tracks/12/keys = {
 "method": &"stop"
 }]
 }
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Control/Skip:modulate")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ewknp"]
 _data = {
@@ -638,6 +663,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="LabelSettings" id="LabelSettings_pgam6"]
+font = ExtResource("11_a7jvs")
+
 [node name="Intro" type="Node2D"]
 script = ExtResource("1_nn7w8")
 
@@ -694,5 +722,33 @@ texture = ExtResource("9_ewknp")
 [node name="OutOfTime" type="AnimatedSprite2D" parent="."]
 position = Vector2(320, 180)
 sprite_frames = SubResource("SpriteFrames_pr6kk")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 640.0
+offset_bottom = 360.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Skip" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -67.0
+offset_top = -36.0
+offset_right = 117.0
+offset_bottom = -13.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Press space to skip"
+label_settings = SubResource("LabelSettings_pgam6")
+horizontal_alignment = 1
+vertical_alignment = 2
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

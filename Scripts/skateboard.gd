@@ -20,6 +20,7 @@ extends Node2D
 var holding_sticker = false
 var sticker: Node2D
 var stickers_placed = 0
+var just_placed_sticker = false
 
 var level_finished = false
 
@@ -36,15 +37,17 @@ func _process(_delta: float) -> void:
 		sticker.position = get_viewport().get_mouse_position()
 
 func item_clicked(clicked_item: Sprite2D, event: InputEvent):
-	if event is InputEventMouseButton and not holding_sticker:
+	if event is InputEventMouseButton and not holding_sticker and not just_placed_sticker:
 		sticker = clicked_item
 		holding_sticker = true
 
 
 func _on_trigger_1_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
-	if event is InputEventMouseButton and sticker != null:
+	if event is InputEventMouseButton and event.is_pressed() and sticker != null and holding_sticker:
 		print("place sticker")
+		
 		sticker.get_child(0).input_pickable = false
+		just_placed_sticker = true
 		
 		holding_sticker = false
 		sticker = null
@@ -54,4 +57,7 @@ func _on_trigger_1_input_event(_viewport: Node, event: InputEvent, _shape_idx: i
 		
 		if stickers_placed >= 3:
 			Globals.minigame_finished.emit()
+		
+		await sticker_place.finished
+		just_placed_sticker = false
 		
